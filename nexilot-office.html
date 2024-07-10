@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot Office</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url("images/8.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0), transparent);
+            z-index: 1000;
+        }
+        header .nav-logo p {
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        header .nav-menu ul {
+            display: flex;
+        }
+        header .nav-menu ul li {
+            list-style-type: none;
+        }
+        header .nav-menu ul li .link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        header .link:hover, header .active {
+            border-bottom: 2px solid #fff;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 120px;
+        }
+        .product {
+            display: flex;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 50%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-details {
+            width: 50%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .product-details h1 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 24px;
+            color: #fd0000;
+            margin-bottom: 10px;
+        }
+        .variant-selection {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .variant-selection img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+        .variant-selection img:hover,
+        .variant-selection img.selected {
+            border: 2px solid #fff;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .selected-variant {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+        .specifications {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .specifications .spec-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .specifications .spec-row div {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function changeVariant(variant) {
+            const productTitle = document.getElementById("productTitle");
+            const productPrice = document.getElementById("productPrice");
+            const selectedVariantText = document.getElementById("selectedVariantText");
+            const productImage = document.getElementById("productImage");
+            const productSpecifications = document.getElementById("productSpecifications");
+
+            const variants = {
+                mini: {
+                    title: "Nexilot Office Mini",
+                    price: "19 970 €",
+                    specifications: {
+                        length: "2.00 m",
+                        width: "3.00 m",
+                        height: "2.50 m",
+                        totalArea: "6 m²",
+                        bathroomArea: "1.5 m²",
+                        weight: "~ 1.2 tons"
+                    },
+                    image: "images/mini.jpg"
+                },
+                standard: {
+                    title: "Nexilot Office Standard",
+                    price: "29 970 €",
+                    specifications: {
+                        length: "4.00 m",
+                        width: "2.50 m",
+                        height: "3.00 m",
+                        totalArea: "10 m²",
+                        bathroomArea: "2.0 m²",
+                        weight: "~ 3.5 tons"
+                    },
+                    image: "images/standard.jpg"
+                },
+                premium: {
+                    title: "Nexilot Office Premium",
+                    price: "39 970 €",
+                    specifications: {
+                        length: "6.32 m",
+                        width: "3.33 m",
+                        height: "3.13 m",
+                        totalArea: "21.1 m²",
+                        bathroomArea: "2.9 m²",
+                        weight: "~ 7.5 tons"
+                    },
+                    image: "images/premium.jpg"
+                },
+                custom: {
+                    title: "Nexilot Office Custom",
+                    price: "49 970 €",
+                    specifications: {
+                        length: "Na vyžiadanie",
+                        width: "Na vyžiadanie",
+                        height: "Na vyžiadanie",
+                        totalArea: "Na vyžiadanie",
+                        bathroomArea: "Na vyžiadanie",
+                        weight: "Na vyžiadanie"
+                    },
+                    image: "images/custom.jpg"
+                }
+            };
+
+            // Update product details based on selected variant
+            productTitle.textContent = variants[variant].title;
+            productPrice.textContent = variants[variant].price;
+            selectedVariantText.textContent = `Vybraná varianta: ${variants[variant].title}`;
+            productImage.src = variants[variant].image;
+
+            // Update specifications
+            const specs = variants[variant].specifications;
+            productSpecifications.innerHTML = `
+                <div class="spec-row"><div>Length</div><div>${specs.length}</div></div>
+                <div class="spec-row"><div>Width</div><div>${specs.width}</div></div>
+                <div class="spec-row"><div>Height</div><div>${specs.height}</div></div>
+                <div class="spec-row"><div>Total area</div><div>${specs.totalArea}</div></div>
+                <div class="spec-row"><div>Bathroom area</div><div>${specs.bathroomArea}</div></div>
+                <div class="spec-row"><div>Weight</div><div>${specs.weight}</div></div>
+            `;
+
+            // Reset other styles
+            const variantImages = document.querySelectorAll(".variant-selection img");
+            variantImages.forEach(img => img.classList.remove("selected"));
+            // Highlight selected image
+            const selectedImage = document.querySelector(`.variant-selection img[data-variant="${variant}"]`);
+            selectedImage.classList.add("selected");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">
+            <p>Nexilot Office</p>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="link">Domov</a></li>
+                <li><a href="sluzby.html" class="link active">Služby</a></li>
+                <li><a href="onas.html" class="link">O nás</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="product">
+            <img id="productImage" src="images/mini.jpg" alt="Product Image">
+            <div class="product-details">
+                <h1 id="productTitle">Nexilot Office Mini</h1>
+                <p class="product-price" id="productPrice">19 970 €</p>
+                <div class="variant-selection">
+                    <img src="images/mini.jpg" alt="Mini" data-variant="mini" onclick="changeVariant('mini')" class="selected">
+                    <img src="images/standard.jpg" alt="Standard" data-variant="standard" onclick="changeVariant('standard')">
+                    <img src="images/premium.jpg" alt="Premium" data-variant="premium" onclick="changeVariant('premium')">
+                    <img src="images/custom.jpg" alt="Custom" data-variant="custom" onclick="changeVariant('custom')">
+                </div>
+                <p id="selectedVariantText" class="selected-variant">Vybraná varianta: Nexilot Office Mini</p>
+                <a href="#" class="button">Mám záujem</a>
+                <div class="specifications" id="productSpecifications">
+                    <div class="spec-row"><div>Dĺžka</div><div>?</div></div>
+                    <div class="spec-row"><div>Šírka</div><div>?</div></div>
+                    <div class="spec-row"><div>Výška</div><div>?</div></div>
+                    <div class="spec-row"><div>Spolu m²</div><div>?</div></div>
+                    <div class="spec-row"><div>Približná váha</div><div>~ ?s</div></div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot House</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url("images/8.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0), transparent);
+            z-index: 1000;
+        }
+        header .nav-logo p {
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        header .nav-menu ul {
+            display: flex;
+        }
+        header .nav-menu ul li {
+            list-style-type: none;
+        }
+        header .nav-menu ul li .link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        header .link:hover, header .active {
+            border-bottom: 2px solid #fff;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 120px;
+        }
+        .product {
+            display: flex;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 50%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-details {
+            width: 50%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .product-details h1 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 24px;
+            color: #fd0000;
+            margin-bottom: 10px;
+        }
+        .variant-selection {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .variant-selection img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+        .variant-selection img:hover,
+        .variant-selection img.selected {
+            border: 2px solid #fff;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .selected-variant {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+        .specifications {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .specifications .spec-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .specifications .spec-row div {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function changeVariant(variant) {
+            const productTitle = document.getElementById("productTitle");
+            const productPrice = document.getElementById("productPrice");
+            const selectedVariantText = document.getElementById("selectedVariantText");
+            const productImage = document.getElementById("productImage");
+            const productSpecifications = document.getElementById("productSpecifications");
+
+            const variants = {
+                mini: {
+                    title: "Nexilot House Mini 2x3m",
+                    price: "16 500 €",
+                    specifications: {
+                        Dĺžka: "2.00 m",
+                        Šírka: "3.00 m",
+                        Výška: "2.50 m",
+                        Spolu: "6 m²",
+                    },
+                    image: "images/.jpg"
+                },
+                standard: {
+                    title: "Nexilot House Standard 4x2,5m",
+                    price: "27 300 €",
+                    specifications: {
+                        Dĺžka: "4.00 m",
+                        Šírka: "2.50 m",
+                        Výška: "3.00 m",
+                        Spolu: "10 m²",
+                    },
+                    image: "images/house_standard.jpg"
+                },
+                premium: {
+                    title: "Nexilot House Premium 6x3,5m",
+                    price: "44 350 €",
+                    specifications: {
+                        Dĺžka: "6.32 m",
+                        Šírka: "3.33 m",
+                        Výška: "3.13 m",
+                        Spolu: "21.1 m²",
+                    },
+                    image: "images/house_premium.jpg"
+                },
+                custom: {
+                    title: "Nexilot House Custom",
+                    price: "Cena na vyžiadanie",
+                    specifications: {
+                        Dĺžka: "Na vyžiadanie",
+                        Šírka: "Na vyžiadanie",
+                        Výška: "Na vyžiadanie",
+                        Spolu: "Na vyžiadanie",
+                    },
+                    image: "images/house_custom.jpg"
+                }
+            };
+
+            // Update product details based on selected variant
+            productTitle.textContent = variants[variant].title;
+            productPrice.textContent = variants[variant].price;
+            selectedVariantText.textContent = `Vybraná varianta: ${variants[variant].title}`;
+            productImage.src = variants[variant].image;
+
+            // Update specifications
+            const specs = variants[variant].specifications;
+            productSpecifications.innerHTML = `
+                <div class="spec-row"><div>Dĺžka</div><div>${specs.Dĺžka}</div></div>
+                <div class="spec-row"><div>Šírka</div><div>${specs.Šírka}</div></div>
+                <div class="spec-row"><div>Výška</div><div>${specs.Výška}</div></div>
+                <div class="spec-row"><div>Spolu m²</div><div>${specs.Spolu}</div></div>
+            `;
+
+            // Reset other styles
+            const variantImages = document.querySelectorAll(".variant-selection img");
+            variantImages.forEach(img => img.classList.remove("selected"));
+            // Highlight selected image
+            const selectedImage = document.querySelector(`.variant-selection img[data-variant="${variant}"]`);
+            selectedImage.classList.add("selected");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">
+            <p>Nexilot House</p>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="link">Domov</a></li>
+                <li><a href="sluzby.html" class="link active">Služby</a></li>
+                <li><a href="onas.html" class="link">O nás</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="product">
+            <img id="productImage" src="images/9.jpg" alt="Nexilot House Mini 2x3m">
+            <div class="product-details">
+                <h1 id="productTitle">Nexilot House Mini 2x3m</h1>
+                <p class="product-price" id="productPrice">16 500 €</p>
+                <div class="variant-selection">
+                    <img src="images/house_mini.jpg" alt="Mini variant" data-variant="mini" onclick="changeVariant('mini')" class="selected">
+                    <img src="images/house_standard.jpg" alt="Standard variant" data-variant="standard" onclick="changeVariant('standard')">
+                    <img src="images/house_premium.jpg" alt="Premium variant" data-variant="premium" onclick="changeVariant('premium')">
+                    <img src="images/house_custom.jpg" alt="Custom variant" data-variant="custom" onclick="changeVariant('custom')">
+                </div>
+                <p class="selected-variant" id="selectedVariantText">Vybraná varianta: Nexilot House Mini 2x3</p>
+                <div class="specifications" id="productSpecifications">
+                    <div class="spec-row"><div>Dĺžka</div><div>2.00 m</div></div>
+                    <div class="spec-row"><div>Šírka</div><div>3.00 m</div></div>
+                    <div class="spec-row"><div>Výška</div><div>2.50 m</div></div>
+                    <div class="spec-row"><div>Spolu m²</div><div>6 m²</div></div>
+                </div>
+                <button class="button">Mám záujem</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

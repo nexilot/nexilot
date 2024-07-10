@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            background: url("images/8.jpg");
+            color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(39, 39, 39, 0); /* Slight background overlay */
+            padding: 20px;
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: rgba(39, 39, 39, 0);
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .nav-logo p{
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .nav-menu ul{
+            display: flex;
+        }
+        .nav-menu ul li{
+            list-style-type: none;
+        }
+        .nav-menu ul li .link{
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        .link:hover, .active{
+            border-bottom: 2px solid #fff;
+        }
+        .nav-button .btn{
+            width: 130px;
+            height: 40px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+        .btn:hover{
+            background: rgba(255, 255, 255, 0);
+        }
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 150px 0 50px 0;
+        }
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .hero-image {
+            width: 30%; /* Reduced size */
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out; /* Animation */
+        }
+        .hero-section p {
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .about-section, .mission-section, .vision-section, .offers-section, .contact-section {
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+        }
+        .about-section h2, .mission-section h2, .vision-section h2, .offers-section h2, .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about-section p, .mission-section p, .vision-section p, .offers-section p, .contact-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        .offers-section .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .offers-section .offer-card {
+            background: rgba(117, 72, 75, 0.288);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 30%;
+            min-width: 250px;
+            transition: transform 0.3s;
+        }
+        .offers-section .offer-card:hover {
+            transform: translateY(-10px);
+        }
+        .offers-section .offer-card img {
+            width: 100%;
+            height: auto;
+        }
+        .offers-section .offer-content {
+            padding: 20px;
+        }
+        .offers-section .offer-content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .offers-section .offer-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .offers-section .offer-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 20px; /* Make the buttons rounded */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .offers-section .offer-btn:hover {
+            background-color: #756b6b48;
+        }
+        .reservation-section {
+            padding: 50px 0;
+            text-align: center;
+            width: 100%;
+            background-color: #f0f0f000;
+            color: #ffffff;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .reservation-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .reservation-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .reservation-form div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .reservation-form label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .reservation-form input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .reservation-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #44444400;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .reservation-form button:hover {
+            background-color: #55555500;
+        }
+        /* Footer Section */
+        .footer {
+            width: 100%;
+            background: rgba(39, 39, 39, 0);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .footer p {
+            font-size: 16px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>NEXILOT</p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="link active">Domov</a></li>
+                    <li><a href="rezervacie.html" class="link">Rezervácie</a></li>
+                    <li><a href="sluzby.html" class="link">Služby</a></li>
+                </ul>
+            </div>
+        </nav>
+       
+        <div class="hero-section">
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="images/20.jpg" alt="Nexilot Image 1">
+                </div>
+                <div class="hero-image">
+                    <img src="images/10.jpg" alt="Nexilot Image 2">
+                </div>
+            </div>
+            <h1>Čo je NEXILOT?</h1>
+            <p>NEXILOT = miesto, kam idete za oddychom alebo za prácou a produktivitou...</p>
+            <p>Ponúkame Nexiloty ktoré si môžete kúpiť alebo prenajať cez náš web.</p>
+            <p>Ponúkame najnižšie CENY</p>
+        </div>
+
+        <div class="vision-section">
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="images/9.jpg" alt="Nexilot Vision 1">
+                </div>
+                <div class="hero-image">
+                    <img src="images/16.jpg" alt="Nexilot Vision 2">
+                </div>
+            </div>
+            <h2>Naša vízia</h2>
+            <p>Chceme zaviesť 1000 Nexilotov do 5 rokov...</p>
+            <p>Našim cieľom je zabezpečiť zákazníkom komfort a peňažnú slobodu...</p>
+        </div>
+
+        <div class="offers-section">
+            <h2>Naša Ponuka</h2>
+            <div class="container">
+                <div class="offer-card">
+                    <img src="images/9.jpg" alt="Nexilot House">
+                    <div class="offer-content">
+                        <h3>Nexilot House</h3>
+                        <p>Comfortable and affordable cabin houses that can be moved to your desired location.</p>
+                        <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-section">
+            <h2>Kontaktujte nás</h2>
+            <p>E-mail: nexiloteamm@gmail.com</p>
+            <p>Telefón: +421 949 244 295</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Nexilot. Všetky práva vyhradené.</p>
+            <p>
+                <a href="https://www.instagram.com/nexilot" target="_blank">Instagram</a>|
+                <a href="https://www.twitter.com/nexilot" target="_blank">Twitter</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

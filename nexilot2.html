@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url("images/8.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0), transparent);
+            z-index: 1000;
+        }
+        header .nav-logo p {
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        header .nav-menu ul {
+            display: flex;
+        }
+        header .nav-menu ul li {
+            list-style-type: none;
+        }
+        header .nav-menu ul li .link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        header .link:hover, header .active {
+            border-bottom: 2px solid #fff;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 120px;
+        }
+        .product {
+            display: flex;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 50%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-details {
+            width: 50%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .product-details h1 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 24px;
+            color: #fd0000;
+            margin-bottom: 10px;
+        }
+        .variant-selection {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .variant-selection img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+        .variant-selection img:hover,
+        .variant-selection img.selected {
+            border: 2px solid #fff;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .description {
+            margin-top: 20px;
+        }
+        .description h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .description p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .selected-variant {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+    <script>
+        function changeVariant(variant) {
+            const productTitle = document.getElementById("productTitle");
+            const productPrice = document.getElementById("productPrice");
+            const productDescription = document.getElementById("productDescription");
+            const selectedVariantText = document.getElementById("selectedVariantText");
+
+            const variants = {
+                mini: {
+                    title: "Nexilot Mini",
+                    price: "19 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Mini:</strong> Ponúka útulné, moderné a lacné ubytovanie.
+                    <span id="moreText" class="more-text"> Okrem moderného dizajnu a kvalitných materiálov ponúka aj energetickú úspornosť a udržateľnosť. Ideálny pre páry, jednotlivcov, alebo ako víkendový dom pre celú rodinu. S veľkými oknami a otvoreným priestorom prináša množstvo prirodzeného svetla a spojenie s prírodou. Montáž je rýchla a jednoduchá, a domček je možné prispôsobiť individuálnym požiadavkám klienta.</span></p>
+                    <h3>Dizajn a Exteriér:</h3>
+                    <p>Domček má moderný a minimalistický dizajn s čistými líniami a elegantným vzhľadom. Exteriér je vyrobený z odolných materiálov, ktoré zabezpečujú dlhú životnosť a minimálnu údržbu.</p>`
+                },
+                standard: {
+                    title: "Nexilot Standard",
+                    price: "29 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Standard:</strong> Ideálny pre rodiny s deťmi, ponúka priestrannejšie ubytovanie.
+                    <span id="moreText" class="more-text"> Vyznačuje sa moderným dizajnom a kvalitnými materiálmi, energetickou úspornosťou a udržateľnosťou. S veľkými oknami a otvoreným priestorom prináša množstvo prirodzeného svetla a spojenie s prírodou. Montáž je rýchla a jednoduchá, a domček je možné prispôsobiť individuálnym požiadavkám klienta.</span></p>
+                    <h3>Dizajn a Exteriér:</h3>
+                    <p>Moderný a minimalistický dizajn s čistými líniami a elegantným vzhľadom. Exteriér je vyrobený z odolných materiálov, ktoré zabezpečujú dlhú životnosť a minimálnu údržbu.</p>`
+                },
+                premium: {
+                    title: "Nexilot Premium",
+                    price: "39 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Premium:</strong> Luxusné a priestranné ubytovanie pre náročných klientov.
+                    <span id="moreText" class="more-text"> Ponúka moderný dizajn a kvalitné materiály, energetickú úspornosť a udržateľnosť. S veľkými oknami a otvoreným priestorom prináša množstvo prirodzeného svetla a spojenie s prírodou. Montáž je rýchla a jednoduchá, a domček je možné prispôsobiť individuálnym požiadavkám klienta.</span></p>
+                    <h3>Dizajn a Exteriér:</h3>
+                    <p>Luxusný a moderný dizajn s čistými líniami a elegantným vzhľadom. Exteriér je vyrobený z odolných materiálov, ktoré zabezpečujú dlhú životnosť a minimálnu údržbu.</p>`
+                },
+                custom: {
+                    title: "Nexilot Custom",
+                    price: "49 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Custom:</strong> Plne prispôsobiteľné ubytovanie podľa vašich predstáv.
+                    <span id="moreText" class="more-text"> Ponúka moderný dizajn a kvalitné materiály, energetickú úspornosť a udržateľnosť. S veľkými oknami a otvoreným priestorom prináša množstvo prirodzeného svetla a spojenie s prírodou. Montáž je rýchla a jednoduchá, a domček je možné prispôsobiť individuálnym požiadavkám klienta.</span></p>
+                    <h3>Dizajn a Exteriér:</h3>
+                    <p>Plne prispôsobiteľný dizajn s čistými líniami a elegantným vzhľadom. Exteriér je vyrobený z odolných materiálov, ktoré zabezpečujú dlhú životnosť a minimálnu údržbu.</p>`
+                }
+            };
+
+            const selectedVariant = variants[variant];
+            productTitle.innerHTML = selectedVariant.title;
+            productPrice.innerHTML = selectedVariant.price;
+            productDescription.innerHTML = selectedVariant.description;
+            selectedVariantText.innerHTML = selectedVariant.title;
+
+            document.querySelectorAll('.variant-selection img').forEach(img => img.classList.remove('selected'));
+            document.getElementById(`variant-${variant}`).classList.add('selected');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">
+            <p>NEXILOT</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="index.html" class="link">Domov</a></li>
+                <li><a href="blog.html" class="link">Blog</a></li>
+                <li><a href="sluzby.html" class="link active">Služby</a></li>
+                <li><a href="onas.html" class="link">O nás</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <div class="product">
+            <img src="images/1.jpg" alt="Nexilot Domček s rozmermi">
+            <div class="product-details">
+                <h1 id="productTitle">Nexilot Mini</h1>
+                <p class="product-price" id="productPrice">19 970 €</p>
+                <div class="variant-selection">
+                    <img id="variant-mini" src="images/mini.jpg" alt="Mini" class="selected" onclick="changeVariant('mini')">
+                    <img id="variant-standard" src="images/standard.jpg" alt="Standard" onclick="changeVariant('standard')">
+                    <img id="variant-premium" src="images/premium.jpg" alt="Premium" onclick="changeVariant('premium')">
+                    <img id="variant-custom" src="images/custom.jpg" alt="Custom" onclick="changeVariant('custom')">
+                </div>
+                <button class="button">Mám záujem</button>
+                <div class="description" id="productDescription">
+                    <h2>Popis</h2>
+                    <p><strong>Nexilot Mini:</strong> Ponúka útulné, moderné a lacné ubytovanie.
+                    <span id="moreText" class="more-text"> Okrem moderného dizajnu a kvalitných materiálov ponúka aj energetickú úspornosť a udržateľnosť. Ideálny pre páry, jednotlivcov, alebo ako víkendový dom pre celú rodinu. S veľkými oknami a otvoreným priestorom prináša množstvo prirodzeného svetla a spojenie s prírodou. Montáž je rýchla a jednoduchá, a domček je možné prispôsobiť individuálnym požiadavkám klienta.</span></p>
+                    <h3>Dizajn a Exteriér:</h3>
+                    <p>Domček má moderný a minimalistický dizajn s čistými líniami a elegantným vzhľadom. Exteriér je vyrobený z odolných materiálov, ktoré zabezpečujú dlhú životnosť a minimálnu údržbu.</p>
+                </div>
+                <div id="selectedVariant" class="selected-variant">
+                    <span>Vybraná varianta:</span> <span id="selectedVariantText">Mini</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

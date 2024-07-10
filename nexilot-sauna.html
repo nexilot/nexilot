@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot Sauna</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url("images/8.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0), transparent);
+            z-index: 1000;
+        }
+        header .nav-logo p {
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        header .nav-menu ul {
+            display: flex;
+        }
+        header .nav-menu ul li {
+            list-style-type: none;
+        }
+        header .nav-menu ul li .link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        header .link:hover, header .active {
+            border-bottom: 2px solid #fff;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 120px;
+        }
+        .product {
+            display: flex;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 50%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-details {
+            width: 50%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .product-details h1 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 24px;
+            color: #fd0000;
+            margin-bottom: 10px;
+        }
+        .variant-selection {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .variant-selection img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+        .variant-selection img:hover,
+        .variant-selection img.selected {
+            border: 2px solid #fff;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background-color: #333;
+        }
+        .description {
+            margin-top: 20px;
+        }
+        .description h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .description p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .selected-variant {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+    <script>
+        function changeVariant(variant) {
+            const productTitle = document.getElementById("productTitle");
+            const productPrice = document.getElementById("productPrice");
+            const productDescription = document.getElementById("productDescription");
+            const selectedVariantText = document.getElementById("selectedVariantText");
+            const productImage = document.getElementById("productImage");
+
+            const variants = {
+                mini: {
+                    title: "Nexilot Sauna Mini",
+                    price: "19 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Sauna Mini:</strong> Kompaktná a moderná sauna pre menšie priestory.
+                    <span id="moreText" class="more-text"> Ideálna pre domáce použitie alebo malé wellness centrá. Vnútorný priestor je dobre štruktúrovaný pre maximálnu efektivitu a pohodlie. Navrhnuté s dôrazom na praktickosť a estetiku.</span></p>
+                    <h3>Dizajn a Interiér:</h3>
+                    <p>Moderný a funkčný dizajn s využitím kvalitných materiálov, ktoré zaručujú dlhú životnosť a nízku údržbu.</p>`,
+                    image: "images/sauna_mini.jpg"
+                },
+                standard: {
+                    title: "Nexilot Sauna Standard",
+                    price: "29 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Sauna Standard:</strong> Pre stredne veľké wellness centrá alebo rodinné použitie.
+                    <span id="moreText" class="more-text"> Poskytuje dostatok miesta a komfortu pre viacero osôb. Moderný a praktický dizajn zabezpečuje efektívne využitie priestoru a príjemné prostredie pre relaxáciu.</span></p>
+                    <h3>Dizajn a Interiér:</h3>
+                    <p>Moderný a funkčný dizajn s využitím kvalitných materiálov, ktoré zaručujú dlhú životnosť a nízku údržbu.</p>`,
+                    image: "images/sauna_standard.jpg"
+                },
+                premium: {
+                    title: "Nexilot Sauna Premium",
+                    price: "39 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Sauna Premium:</strong> Luxusná sauna pre náročných klientov.
+                    <span id="moreText" class="more-text"> Ponúka špičkový dizajn a luxusný interiér pre vaše wellness centrum alebo osobné použitie. Navrhnutá s dôrazom na detail a komfort, zaručuje prvotriedny relaxačný zážitok.</span></p>
+                    <h3>Dizajn a Interiér:</h3>
+                    <p>Luxusný a moderný dizajn s využitím kvalitných materiálov, ktoré zaručujú dlhú životnosť a nízku údržbu.</p>`,
+                    image: "images/sauna_premium.jpg"
+                },
+                custom: {
+                    title: "Nexilot Sauna Custom",
+                    price: "49 970 €",
+                    description: `<h2>Popis</h2><p><strong>Nexilot Sauna Custom:</strong> Plne prispôsobiteľná sauna podľa vašich požiadaviek.
+                    <span id="moreText" class="more-text"> Ponúka možnosť individuálneho prispôsobenia pre maximálnu efektivitu a komfort vášho wellness centra alebo domova. Navrhnutá pre tých, ktorí si kladú dôraz na flexibilitu a špecifické požiadavky.</span></p>
+                    <h3>Dizajn a Interiér:</h3>
+                    <p>Moderný a funkčný dizajn s využitím kvalitných materiálov, ktoré zaručujú dlhú životnosť a nízku údržbu.</p>`,
+                    image: "images/sauna_custom.jpg"
+                }
+            };
+
+            // Update product details based on selected variant
+            productTitle.textContent = variants[variant].title;
+            productPrice.textContent = variants[variant].price;
+            productDescription.innerHTML = variants[variant].description;
+            selectedVariantText.textContent = `Vybraná varianta: ${variants[variant].title}`;
+            productImage.src = variants[variant].image;
+
+            // Reset other styles
+            const variantImages = document.querySelectorAll(".variant-selection img");
+            variantImages.forEach(img => img.classList.remove("selected"));
+            // Highlight selected image
+            const selectedImage = document.querySelector(`.variant-selection img[data-variant="${variant}"]`);
+            selectedImage.classList.add("selected");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">
+            <p>Nexilot Sauna</p>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="link">Domov</a></li>
+                <li><a href="sluzby.html" class="link active">Služby</a></li>
+                <li><a href="onas.html" class="link">O nás</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="product">
+            <img id="productImage" src="images/sauna_mini.jpg" alt="Nexilot Sauna Mini">
+            <div class="product-details">
+                <h1 id="productTitle">Nexilot Sauna Mini</h1>
+                <p class="product-price" id="productPrice">19 970 €</p>
+                <div class="variant-selection">
+                    <img src="images/sauna_mini.jpg" alt="Mini variant" data-variant="mini" onclick="changeVariant('mini')" class="selected">
+                    <img src="images/sauna_standard.jpg" alt="Standard variant" data-variant="standard" onclick="changeVariant('standard')">
+                    <img src="images/sauna_premium.jpg" alt="Premium variant" data-variant="premium" onclick="changeVariant('premium')">
+                    <img src="images/sauna_custom.jpg" alt="Custom variant" data-variant="custom" onclick="changeVariant('custom')">
+                </div>
+                <p class="selected-variant" id="selectedVariantText">Vybraná varianta: Nexilot Sauna Mini</p>
+                <button class="button">Mám záujem</button>
+                <div class="description" id="productDescription">
+                    <h2>Popis</h2>
+                    <p><strong>Nexilot Sauna Mini:</strong> Kompaktná a moderná sauna pre menšie priestory. Ideálna pre domáce použitie alebo malé wellness centrá.</p>
+                    <h3>Dizajn a Interiér:</h3>
+                    <p>Moderný a funkčný dizajn s využitím kvalitných materiálov.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: url("images/8.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(37, 27, 27, 0);
+}
+.nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background: linear-gradient(rgba(161, 19, 19, 0), transparent);
+    z-index: 100;
+}
+.nav-logo p{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+.nav-menu ul{
+    display: flex;
+}
+.nav-menu ul li{
+    list-style-type: none;
+}
+.nav-menu ul li .link{
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 15px;
+    margin: 0 25px;
+}
+.link:hover, .active{
+    border-bottom: 2px solid #fff;
+}
+.nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(143, 36, 36, 0.308);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+.btn:hover{
+    background: rgba(255, 255, 255, 0.466);
+}
+#registerBtn{
+    margin-left: 15px;
+}
+.btn.white-btn{
+    background: rgba(255, 255, 255, 0.205);
+}
+.btn.btn.white-btn:hover{
+    background: rgba(255, 255, 255, 0);
+}
+.nav-menu-btn{
+    display: none;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 100px 20px;
+}
+.hero-image {
+    width: 100%;
+    height: auto;
+}
+.hero-text {
+    margin-top: 20px;
+}
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.hero-text p {
+    font-size: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* About Us, Our Mission, and Our Vision Sections */
+.about-section, .mission-section, .vision-section {
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+.about-section h2, .mission-section h2, .vision-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.about-section p, .mission-section p, .vision-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+.image-template {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.image-template img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Offers Section */
+.offers-section {
+    padding: 50px 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+.offers-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.offers-section .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.offers-section .offer-card {
+    background: rgba(124, 72, 48, 0.192);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 30%;
+    min-width: 250px;
+    transition: transform 0.3s;
+}
+.offers-section .offer-card:hover {
+    transform: translateY(-10px);
+}
+.offers-section .offer-card img {
+    width: 100%;
+    height: auto;
+}
+.offers-section .offer-content {
+    padding: 20px;
+}
+.offers-section .offer-content h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.offers-section .offer-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.offers-section .offer-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.offers-section .offer-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+@media only screen and (max-width: 786px){
+    .nav-button{
+        display: none;
+    }
+    .nav-menu.responsive{
+        top: 100px;
+    }
+    .nav-menu{
+        position: absolute;
+        top: -800px;
+        display: flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0);
+        width: 100%;
+        height: 90vh;
+        backdrop-filter: blur(20px);
+        transition: .3s;
+    }
+    .nav-menu ul{
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-menu-btn{
+        display: block;
+    }
+    .nav-menu-btn i{
+        font-size: 25px;
+        color: #fff;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+    }
+    .nav-menu-btn i:hover{
+        background: rgba(255, 255, 255, 0);
+    }
+    .offers-section .container {
+        flex-direction: column;
+    }
+    .offers-section .offer-card {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
+@media only screen and (max-width: 540px) {
+    .wrapper{
+        min-height: 100vh;
+    }
+    .form-box{
+        width: 100%;
+        height: 500px;
+    }
+    .register-container, .login-container{
+        width: 100%;
+        padding: 0 20px;
+    }
+    .register-container .two-forms{
+        flex-direction: column;
+        gap: 0;
+    }
+}

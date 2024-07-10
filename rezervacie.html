@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nexilot - Rezervácie</title>
+    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            background: url("images/8.jpg");
+            color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(39, 39, 39, 0);
+            padding: 20px;
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: linear-gradient(rgba(39, 39, 39, 0), transparent);
+            z-index: 100;
+        }
+        .nav-logo p{
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .nav-menu ul{
+            display: flex;
+        }
+        .nav-menu ul li{
+            list-style-type: none;
+        }
+        .nav-menu ul li .link{
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        .link:hover, .active{
+            border-bottom: 2px solid #fff;
+        }
+        .nav-button .btn{
+            width: 130px;
+            height: 40px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+        .btn:hover{
+            background: rgba(255, 255, 255, 0);
+        }
+        #registerBtn{
+            margin-left: 15px;
+        }
+        .btn.white-btn{
+            background: rgba(255, 255, 255, 0);
+        }
+        .btn.btn.white-btn:hover{
+            background: rgba(255, 255, 255, 0);
+        }
+        .nav-menu-btn{
+            display: none;
+        }
+
+        .reservation-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 150px 0 50px 0;
+            text-align: center;
+        }
+        .reservation-section h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .reservation-section form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            background: rgba(39, 39, 39, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+            text-align: left;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 calc(33.333% - 15px);
+        }
+        .form-group.label-small {
+            flex: 1 1 calc(16.666% - 15px); /* Smaller width for ID field */
+        }
+        .form-group.input-large {
+            flex: 2 1 calc(33.333% - 15px); /* Larger width for the submit button */
+        }
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        .form-group input[type="date"], .form-group input[type="number"], .form-group input[type="email"], .form-group input[type="tel"], .form-group input[type="text"] {
+            color: #333;
+        }
+        .form-group button {
+            flex: 1 1 100%;
+            padding: 15px; /* Larger button */
+            border-radius: 5px;
+            border: none;
+            background-color: #fff;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>NEXILOT</p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="link">Domov</a></li>
+                    <li><a href="rezervacie.html" class="link active">Rezervácie</a></li>
+                    <li><a href="sluzby.html" class="link">Služby</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="reservation-section">
+            <h2>Rezervácie</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <div class="form-group">
+                    <label for="checkin">Príchod</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                    <input type="hidden" name="access_key" value="74b1dbe0-0ec1-4b99-bad8-66a0133048f8">
+                </div>
+                <div class="form-group">
+                    <label for="checkout">Odchod</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Osôb</label>
+                    <input type="number" id="guests" name="guests" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefónne číslo</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">Mesto</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group label-small">
+                    <label for="nexilot_id">Identifikačné číslo Nexilotu</label>
+                    <input type="text" id="nexilot_id" name="nexilot_id" required>
+                </div>
+                <div class="form-group input-large">
+                    <button type="submit">Rezervovať</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
