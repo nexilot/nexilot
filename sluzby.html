@@ -7,12 +7,151 @@
     <link rel="stylesheet" href="style.css">
     <title>Nexilot</title>
     <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            background: url("images/8.jpg");
+            color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(39, 39, 39, 0); /* Slight background overlay */
+            padding: 20px;
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between; /* Change to space-between for better alignment */
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background: rgba(39, 39, 39, 0);
+            z-index: 100;
+            transition: background 0.3s;
+            padding: 0 20px; /* Add padding for better spacing */
+        }
+        .nav-logo img {
+            height: 100px; /* Adjust the height of the logo */
+            margin-top: 0; /* Center the logo vertically */
+        }
+        .nav-menu ul{
+            display: flex;
+        }
+        .nav-menu ul li{
+            list-style-type: none;
+        }
+        .nav-menu ul li .link{
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+            padding-bottom: 15px;
+            margin: 0 25px;
+        }
+        .link:hover, .active{
+            border-bottom: 2px solid #fff;
+        }
+        .nav-button .btn{
+            width: 130px;
+            height: 40px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+        .btn:hover{
+            background: rgba(255, 255, 255, 0);
+        }
+        .offers-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 50px 0;
+            background: rgba(39, 39, 39, 0);
+            color: #fff;
+            text-align: center;
+            margin-top: 100px; /* Margin-top for positioning the section lower */
+        }
+        .offers-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(39, 39, 39, 0);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .offer-card {
+            background: #fff;
+            color: #000; /* Text color inside the card */
+            border-radius: 10px;
+            overflow: hidden;
+            width: 450px; /* Increased width */
+            height: 500px; /* Set a fixed height for the card */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Adjust alignment of content */
+        }
+        .offer-card img {
+            width: 100%;
+            height: 60%; /* Adjust height as a percentage of the card height */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+        }
+        .offer-content {
+            padding: 20px;
+            width: 100%; /* Ensure content spans the full width of the card */
+            flex: 1; /* Allow content to expand and fill available space */
+        }
+        .offer-content h3, .offer-content p {
+            color: #fff; /* Change text color to white */
+        }
+        .offer-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .offer-btn:hover {
+            background-color: #44444400;
+        }
+    </style>
 </head>
 <body>
  <div class="wrapper">
     <nav class="nav">
         <div class="nav-logo">
-            <p>NEXILOT</p>
+            <img src="images/nexilotlogo.png" alt="Nexilot Logo">
         </div>
         <div class="nav-menu" id="navMenu">
             <ul>
@@ -26,16 +165,20 @@
         </div>
     </nav>
     <!-- Offers Section -->
- <section class="offers-section">
-    <h2></h2>
-    <h2>Služby</h2>
-    <div class="container">
-        <div class="offer-card">
-            <img src="images/9.jpg" alt="Offer 1">
-            <div class="offer-content">
-                <h3>Nexilot House</h3>
-                <p>Nexilot Domček - 4 varianty</p>
-                <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
+    <section class="offers-section">
+        <h2>Služby</h2>
+        <div class="container">
+            <div class="offer-card">
+                <img src="images/9.jpg" alt="Offer 1">
+                <div class="offer-content">
+                    <h3>Nexilot House</h3>
+                    <p>Nexilot Domček - 4 varianty</p>
+                    <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
+                </div>
             </div>
+            <!-- Add more offer cards here -->
         </div>
-
+    </section>
+ </div>
+</body>
+</html>
