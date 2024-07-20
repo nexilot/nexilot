@@ -8,13 +8,13 @@
     <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        * {  
+        *{  
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        body {
+        body{
             background: url("images/8.jpg");
             color: #fff;
             background-size: cover;
@@ -24,53 +24,53 @@
             padding: 0;
             scroll-behavior: smooth; /* Smooth scrolling */
         }
-        .wrapper {
+        .wrapper{
             display: flex;
             flex-direction: column;
             align-items: center;
             background: rgba(39, 39, 39, 0); /* Slight background overlay */
             padding: 20px;
         }
-        .nav {
+        .nav{
             position: fixed;
             top: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Change to space-between for better alignment */
             width: 100%;
             height: 100px;
             line-height: 100px;
-            background: rgba(39, 39, 39, 0.8); /* Semi-transparent background for better visibility */
+            background: rgba(39, 39, 39, 0); /* Added background for better visibility */
             z-index: 100;
             transition: background 0.3s;
             padding: 0 20px; /* Add padding for better spacing */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow for better separation */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Added shadow for separation */
         }
-        .nav-logo img {
-            height: 80px; /* Adjust height for better fit */
+        .nav-logo img{
+            height: 120px; /* Zvýšená výška loga */
         }
         .nav-menu {
             display: flex;
             align-items: center;
         }
-        .nav-menu ul {
+        .nav-menu ul{
             display: flex;
             list-style: none;
         }
-        .nav-menu ul li {
-            margin: 0 10px;
+        .nav-menu ul li{
+            margin: 0 15px;
         }
-        .nav-menu ul li .link {
+        .nav-menu ul li .link{
             text-decoration: none;
             font-weight: 500;
             color: #fff;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             border-bottom: 2px solid transparent;
             transition: border-bottom 0.3s;
         }
-        .link:hover, .active {
+        .link:hover, .active{
             border-bottom: 2px solid #fff;
         }
-        .nav-button .btn {
+        .nav-button .btn{
             width: 130px;
             height: 40px;
             font-weight: 500;
@@ -81,50 +81,223 @@
             transition: .3s ease;
             color: #fff;
         }
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .btn:hover{
+            background: rgba(255, 255, 255, 0);
         }
-        .menu-toggle {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        .nav-menu ul {
+        .hero-section {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 150px 20px 50px 20px;
         }
-        .nav-menu.active ul {
-            display: block;
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
+        .hero-image {
+            width: 30%; /* Adjusted size */
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out; /* Animation */
+            text-align: center;
+        }
+        .hero-section p {
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .about-section, .mission-section, .vision-section, .offers-section, .contact-section {
+            padding: 50px 20px;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+        }
+        .about-section h2, .mission-section h2, .vision-section h2, .offers-section h2, .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .about-section p, .mission-section p, .vision-section p, .offers-section p, .contact-section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        .offers-section .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .offers-section .offer-card {
+            background: rgba(117, 72, 75, 0.288);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 30%;
+            min-width: 250px;
+            transition: transform 0.3s;
+        }
+        .offers-section .offer-card:hover {
+            transform: translateY(-10px);
+        }
+        .offers-section .offer-card img {
+            width: 100%;
+            height: auto;
+        }
+        .offers-section .offer-content {
+            padding: 20px;
+        }
+        .offers-section .offer-content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .offers-section .offer-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .offers-section .offer-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 20px; /* Make the buttons rounded */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .offers-section .offer-btn:hover {
+            background-color: #71756b00;
+        }
+        .reservation-section {
+            padding: 50px 20px;
+            text-align: center;
+            width: 100%;
+            background-color: #f0f0f0;
+            color: #000;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .reservation-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .reservation-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .reservation-form div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .reservation-form label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .reservation-form input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .reservation-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background-color: #44444400;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .reservation-form button:hover {
+            background-color: #55555500;
+        }
+        /* Footer Section */
+        .footer {
+            width: 100%;
+            background: rgba(39, 39, 39, 0);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+            margin-top: 50px;
+        }
+        .footer p {
+            font-size: 16px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile Styles */
         @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px;
-            }
             .nav-menu {
                 display: none;
+                flex-direction: column;
                 width: 100%;
-            }
-            .menu-toggle {
-                display: block;
+                background: rgba(39, 39, 39, 0);
+                position: absolute;
+                top: 100px;
+                left: 0;
+                z-index: 100;
             }
             .nav-menu.active {
                 display: flex;
-                flex-direction: column;
-                width: 100%;
             }
             .nav-menu ul {
                 flex-direction: column;
-                padding: 10px 0;
                 width: 100%;
             }
             .nav-menu ul li {
                 margin: 10px 0;
                 text-align: center;
             }
-            .nav-logo img {
-                height: 60px;
+            .nav-button .btn {
+                display: none;
+            }
+            .hero-image {
+                width: 100%;
+            }
+            .offers-section .offer-card {
+                width: 100%;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 992px) {
+            .hero-image {
+                width: 45%; /* Adjusted size for tablets */
+            }
+            .offers-section .offer-card {
+                width: 45%; /* Adjusted size for tablets */
             }
         }
     </style>
@@ -135,9 +308,6 @@
             <div class="nav-logo">
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class='bx bx-menu'></i>
-            </div>
             <div class="nav-menu" id="navMenu">
                 <ul>
                     <li><a href="index.html" class="link active">Domov</a></li>
@@ -145,13 +315,58 @@
                     <li><a href="sluzby.html" class="link">Služby</a></li>
                 </ul>
             </div>
+            <div class="nav-button">
+                <button class="btn" onclick="toggleMenu()">Menu</button>
+            </div>
         </nav>
        
         <div class="hero-section">
-            <!-- Content here -->
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="images/20.jpg" alt="Nexilot Image 1">
+                </div>
+                <div class="hero-image">
+                    <img src="images/10.jpg" alt="Nexilot Image 2">
+                </div>
+            </div>
+            <h1>Čo je NEXILOT?</h1>
+            <p>NEXILOT = miesto, kam idete za oddychom alebo za prácou a produktivitou...</p>
+            <p>Ponúkame Nexiloty ktoré si môžete kúpiť alebo prenajať cez náš web.</p>
+            <p>Ponúkame najnižšie CENY</p>
         </div>
 
-        <!-- Other sections here -->
+        <div class="vision-section">
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="images/9.jpg" alt="Nexilot Vision 1">
+                </div>
+                <div class="hero-image">
+                    <img src="images/16.jpg" alt="Nexilot Vision 2">
+                </div>
+            </div>
+            <h2>Naša vízia</h2>
+            <p>Chceme zaviesť 1000 Nexilotov do 5 rokov...</p>
+            <p>Našim cieľom je zabezpečiť zákazníkom komfort a peňažnú slobodu...</p>
+        </div>
+
+        <div class="offers-section">
+            <h2>Naša Ponuka</h2>
+            <div class="container">
+                <div class="offer-card">
+                    <img src="images/9.jpg" alt="Nexilot House">
+                    <div class="offer-content">
+                        <h3>Nexilot House</h3>
+                        <p>Comfortable and affordable cabin houses that can be moved to your desired location.</p>
+                        <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-section">
+            <h2>Kontaktujte nás</h2>
+            <p>E-mail: nexiloteamm@gmail.com</p>
+            <p>Telefón: +421 949 244 295</p>
+        </div>
 
         <div class="footer">
             <p>&copy; 2024 Nexilot. Všetky práva vyhradené.</p>
@@ -170,4 +385,3 @@
     </script>
 </body>
 </html>
-
