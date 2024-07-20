@@ -35,18 +35,18 @@
             position: fixed;
             top: 0;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between; /* Change to space-between for better alignment */
             width: 100%;
             height: 100px;
             line-height: 100px;
             background: rgba(39, 39, 39, 0);
             z-index: 100;
             transition: background 0.3s;
+            padding: 0 20px; /* Add padding for better spacing */
         }
-        .nav-logo p{
-            color: white;
-            font-size: 25px;
-            font-weight: 600;
+        .nav-logo img{
+            height: 100px; /* Increase the height of the logo */
+            margin-top: 0; /* Adjust the margin to center vertically */
         }
         .nav-menu ul{
             display: flex;
@@ -254,7 +254,7 @@
     <div class="wrapper">
         <nav class="nav">
             <div class="nav-logo">
-                <p>NEXILOT</p>
+                <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
                 <ul>
@@ -323,3 +323,4 @@
     </div>
 </body>
 </html>
+
