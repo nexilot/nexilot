@@ -30,20 +30,30 @@
             position: fixed;
             top: 0;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between; /* Space between logo and menu */
             width: 100%;
             height: 100px;
             line-height: 100px;
             background: linear-gradient(rgba(39, 39, 39, 0), transparent);
             z-index: 1000;
+            padding: 0 20px; /* Add padding to prevent content from touching the edges */
         }
-        header .nav-logo p {
-            color: white;
-            font-size: 25px;
-            font-weight: 600;
+        header .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        header .nav-logo #logo {
+            height: 80px; /* Adjust height as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+        header .nav-menu {
+            display: flex;
+            align-items: center;
         }
         header .nav-menu ul {
             display: flex;
+            margin: 0;
+            padding: 0;
         }
         header .nav-menu ul li {
             list-style-type: none;
@@ -75,7 +85,7 @@
         .product img {
             width: 50%;
             height: auto;
-            max-height: 400px;
+            max-height: 500px; /* Increased max-height */
             object-fit: cover;
             border-radius: 10px;
         }
@@ -85,12 +95,12 @@
             box-sizing: border-box;
         }
         .product-details h1 {
-            font-size: 28px;
+            font-size: 32px; /* Increased font-size */
             margin-top: 0;
             margin-bottom: 10px;
         }
         .product-price {
-            font-size: 24px;
+            font-size: 28px; /* Increased font-size */
             color: #fd0000;
             margin-bottom: 10px;
         }
@@ -98,10 +108,11 @@
             margin-top: 20px;
             display: flex;
             align-items: center;
+            flex-wrap: wrap; /* Wrap images if they exceed container width */
         }
         .variant-selection img {
-            width: 50px;
-            height: 50px;
+            width: 80px; /* Increased width */
+            height: 80px; /* Increased height */
             object-fit: cover;
             border-radius: 5px;
             margin-right: 10px;
@@ -124,7 +135,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             border: none;
-            font-size: 16px;
+            font-size: 18px; /* Increased font-size */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .button:hover {
@@ -132,12 +143,12 @@
         }
         .selected-variant {
             margin-top: 10px;
-            font-size: 18px;
+            font-size: 20px; /* Increased font-size */
             color: white;
         }
         .specifications {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 20px; /* Increased font-size */
             line-height: 1.6;
         }
         .specifications .spec-row {
@@ -166,7 +177,7 @@
                         Výška: "2.50 m",
                         Spolu: "6 m²",
                     },
-                    image: "images/.jpg"
+                    image: "images/house_mini.jpg"
                 },
                 standard: {
                     title: "Nexilot House Standard 4x2,5m",
@@ -230,13 +241,13 @@
 <body>
     <header>
         <div class="nav-logo">
-            <p>Nexilot House</p>
+            <img src="images/nexilotlogo.png" alt="Nexilot House Logo" id="logo">
         </div>
         <div class="nav-menu">
             <ul>
                 <li><a href="index.html" class="link">Domov</a></li>
-                <li><a href="sluzby.html" class="link active">Služby</a></li>
-                <li><a href="onas.html" class="link">O nás</a></li>
+                <li><a href="sluzby.html" class="link">Služby</a></li>
+                <li><a href="rezervacie.html" class="link">Rezervácie</a></li>
             </ul>
         </div>
     </header>
@@ -266,3 +277,4 @@
     </div>
 </body>
 </html>
+
