@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Nexilot - Rezervácie</title>
+    <title>Nexilot</title>
     <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -37,29 +37,35 @@
             display: flex;
             justify-content: space-between; /* Change to space-between for better alignment */
             width: 100%;
-            height: 100px;
-            line-height: 100px;
+            height: 120px; /* Increased height to accommodate larger logo */
+            line-height: 120px;
             background: rgba(39, 39, 39, 0);
             z-index: 100;
             transition: background 0.3s;
             padding: 0 20px; /* Add padding for better spacing */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for separation */
         }
         .nav-logo img{
-            height: 100px; /* Increase the height of the logo */
-            margin-top: 0; /* Adjust the margin to center vertically */
+            height: 120px; /* Adjusted logo height */
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
         }
         .nav-menu ul{
             display: flex;
+            list-style: none;
         }
         .nav-menu ul li{
-            list-style-type: none;
+            margin: 0 15px;
         }
         .nav-menu ul li .link{
             text-decoration: none;
             font-weight: 500;
             color: #fff;
             padding-bottom: 15px;
-            margin: 0 25px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s;
         }
         .link:hover, .active{
             border-bottom: 2px solid #fff;
@@ -69,24 +75,25 @@
             height: 40px;
             font-weight: 500;
             background: rgba(255, 255, 255, 0);
-            border: none;
+            border: 1px solid #fff;
             border-radius: 30px;
             cursor: pointer;
             transition: .3s ease;
+            color: #fff;
         }
         .btn:hover{
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, 0.1);
         }
         .reservation-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            padding: 50px 0;
-            background: rgba(39, 39, 39, 0);
+            padding: 50px 20px;
+            background: rgba(39, 39, 39, 0); /* Slightly opaque background */
             color: #fff;
             text-align: center;
-            margin-top: 100px; /* Pridané margin-top pre posunutie sekcie nižšie */
+            margin-top: 120px; /* Adjusted margin-top to match new nav height */
         }
         .reservation-section h2 {
             font-size: 36px;
@@ -162,6 +169,50 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(39, 39, 39, 0.8);
+                position: absolute;
+                top: 120px; /* Adjusted for larger nav */
+                left: 0;
+                z-index: 100;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-menu ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .nav-button .btn {
+                display: block; /* Display menu button on mobile */
+            }
+            .hero-image {
+                width: 100%;
+            }
+            .offers-section .offer-card {
+                width: 100%;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 992px) {
+            .hero-image {
+                width: 45%; /* Adjusted size for tablets */
+            }
+            .offers-section .offer-card {
+                width: 45%; /* Adjusted size for tablets */
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,6 +227,9 @@
                     <li><a href="rezervacie.html" class="link active">Rezervácie</a></li>
                     <li><a href="sluzby.html" class="link">Služby</a></li>
                 </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn" onclick="toggleMenu()">Menu</button>
             </div>
         </nav>
 
@@ -214,10 +268,18 @@
                 <div class="form-group input-large">
                     <button type="submit">Rezervovať</button>
                 </div>
-            </form>
-        </div>
-        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Nexilot. Všetky práva vyhradené.</p>
+            <p><a href="#">O nás</a> | <a href="#">Kontakt</a> | <a href="#">Podmienky</a></p>
+        </footer>
     </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
 
