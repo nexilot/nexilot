@@ -37,16 +37,16 @@
             display: flex;
             justify-content: space-between; /* Change to space-between for better alignment */
             width: 100%;
-            height: 100px;
-            line-height: 100px;
-            background: rgba(39, 39, 39, 0); /* Added background for better visibility */
+            height: 120px; /* Increased height to accommodate larger logo */
+            line-height: 120px;
+            background: rgba(39, 39, 39, 0);
             z-index: 100;
             transition: background 0.3s;
             padding: 0 20px; /* Add padding for better spacing */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Added shadow for separation */
         }
         .nav-logo img{
-            height: 120px; /* Zvýšená výška loga */
+            height: 120px; /* Adjusted logo height */
         }
         .nav-menu {
             display: flex;
@@ -82,14 +82,14 @@
             color: #fff;
         }
         .btn:hover{
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255, 255, 255, 0.1);
         }
         .hero-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            padding: 150px 20px 50px 20px;
+            padding: 150px 20px 50px 20px; /* Adjusted padding */
         }
         .hero-images {
             display: flex;
@@ -194,7 +194,7 @@
             background-color: #f0f0f0;
             color: #000;
             border-radius: 10px;
-            margin-top: 30px;
+            margin-top: 150px; /* Adjusted margin-top to match new nav height */
         }
         .reservation-section h2 {
             font-size: 24px;
@@ -263,9 +263,9 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background: rgba(39, 39, 39, 0);
+                background: rgba(39, 39, 39, 0.8);
                 position: absolute;
-                top: 100px;
+                top: 120px; /* Adjusted for larger nav */
                 left: 0;
                 z-index: 100;
             }
@@ -281,7 +281,7 @@
                 text-align: center;
             }
             .nav-button .btn {
-                display: none;
+                display: block; /* Display menu button on mobile */
             }
             .hero-image {
                 width: 100%;
@@ -310,8 +310,8 @@
             </div>
             <div class="nav-menu" id="navMenu">
                 <ul>
-                    <li><a href="index.html" class="link active">Domov</a></li>
-                    <li><a href="rezervacie.html" class="link">Rezervácie</a></li>
+                    <li><a href="index.html" class="link">Domov</a></li>
+                    <li><a href="rezervacie.html" class="link active">Rezervácie</a></li>
                     <li><a href="sluzby.html" class="link">Služby</a></li>
                 </ul>
             </div>
@@ -319,7 +319,7 @@
                 <button class="btn" onclick="toggleMenu()">Menu</button>
             </div>
         </nav>
-       
+
         <div class="hero-section">
             <div class="hero-images">
                 <div class="hero-image">
@@ -385,3 +385,4 @@
     </script>
 </body>
 </html>
+
