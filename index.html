@@ -14,24 +14,28 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        body{
-            background: url("images/8.jpg");
-            color: #fff;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        body {
             margin: 0;
             padding: 0;
             scroll-behavior: smooth; /* Smooth scrolling */
+            overflow-x: hidden;
+            background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(21, 206, 206));
         }
-        .wrapper{
+        #background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(39, 39, 39, 0); /* Slight background overlay */
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
-        .nav{
+        .nav {
             position: fixed;
             top: 0;
             display: flex;
@@ -45,21 +49,21 @@
             padding: 0 20px; /* Add padding for better spacing */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Added shadow for separation */
         }
-        .nav-logo img{
+        .nav-logo img {
             height: 120px; /* Adjusted logo height */
         }
         .nav-menu {
             display: flex;
             align-items: center;
         }
-        .nav-menu ul{
+        .nav-menu ul {
             display: flex;
             list-style: none;
         }
-        .nav-menu ul li{
+        .nav-menu ul li {
             margin: 0 15px;
         }
-        .nav-menu ul li .link{
+        .nav-menu ul li .link {
             text-decoration: none;
             font-weight: 500;
             color: #fff;
@@ -67,10 +71,10 @@
             border-bottom: 2px solid transparent;
             transition: border-bottom 0.3s;
         }
-        .link:hover, .active{
+        .link:hover, .active {
             border-bottom: 2px solid #fff;
         }
-        .nav-button .btn{
+        .nav-button .btn {
             width: 130px;
             height: 40px;
             font-weight: 500;
@@ -81,7 +85,7 @@
             transition: .3s ease;
             color: #fff;
         }
-        .btn:hover{
+        .btn:hover {
             background: rgba(255, 255, 255, 0.1);
         }
         .hero-section {
@@ -247,25 +251,28 @@
         }
         .footer p {
             font-size: 16px;
+            margin-bottom: 10px;
         }
         .footer a {
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
+            font-weight: 500;
         }
         .footer a:hover {
             text-decoration: underline;
         }
-        
         /* Mobile Styles */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
                 flex-direction: column;
+                position: fixed;
+                top: 80px;
+                right: 0;
+                background: #272727;
                 width: 100%;
-                background: rgba(39, 39, 39, 0.8);
-                position: absolute;
-                top: 120px; /* Adjusted for larger nav */
+                height: calc(100% - 80px); /* Adjusted for new nav height */
                 left: 0;
                 z-index: 100;
             }
@@ -290,7 +297,6 @@
                 width: 100%;
             }
         }
-
         /* Tablet Styles */
         @media (max-width: 992px) {
             .hero-image {
@@ -377,7 +383,39 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
     <script>
+        VANTA.WAVES({
+            el: "#background",
+            color: 0xffbe0b,
+            shininess: 50,
+            waveHeight: 20,
+            waveSpeed: 1,
+            zoom: 0.85,
+            colors: [
+                "#ffbe0b",
+                "#fb5607",
+                "#FF0004",
+                "#8338ec",
+                "#3a86ff"
+            ],
+            speed: 3,
+            horizontalPressure: 2,
+            verticalPressure: 2,
+            waveFrequencyX: 1,
+            waveFrequencyY: 2,
+            waveAmplitude: 7,
+            shadows: 4,
+            highlights: 5,
+            colorBrightness: 1,
+            colorSaturation: 2,
+            wireframe: false,
+            colorBlending: 5,
+            backgroundAlpha: 1,
+            resolution: 0.05
+        });
+
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             menu.classList.toggle('active');
