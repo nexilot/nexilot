@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexilot House</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        /* Všeobecné štýly */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #000000, #000000);
+            color: #fff;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        /* Navigačný panel */
+        header {
+            background-color: #000000;
+            padding: 15px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tieň pod hlavičkou */
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Stredové zarovnanie */
+        }
+
+        .nav-logo img {
+            height: 120px; /* Úprava veľkosti loga */
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            margin: 0 20px; /* Pridanie priestoru okolo navigácie */
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px; /* Zmenšenie písma v navigačnom tabe */
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #66ff99;
+        }
+
+        .nav-button .btn {
+            display: none; /* Skrývanie na desktopovej verzii */
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .nav-button .btn:hover {
+            background-color: #005580;
+            border-color: #66ff99;
+        }
+
+        /* Hlavný obsah */
+        main {
+            padding: 80px 20px 20px; /* Vrchné padding kvôli fixnému headeru */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 40px;
+        }
+
+        .product {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .product img {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-details {
+            max-width: 500px;
+        }
+
+        .product h1 {
+            margin-top: 0;
+            font-size: 36px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #66ff99;
+            margin-bottom: 20px;
+        }
+
+        .variant-selection {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .variant-selection img {
+            width: 80px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .variant-selection img.selected {
+            border-color: #66ff99;
+        }
+
+        .specifications {
+            margin: 20px 0;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        .button {
+            background-color: #009933;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #66cc33;
+        }
+
+        /* Mobilné štýly */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                right: 0;
+                background: #002244;
+                width: 50%;
+                height: calc(100% - 80px);
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tieň pod menu */
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .nav-button .btn {
+                display: block; /* Zobrazenie tlačidla na mobilných zariadeniach */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="nav-logo">
+                <img src="images/nexilotlogo.png" alt="Nexilot Logo">
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html">Domov</a>
+                <a href="rezervacie.html">Rezervácie</a>
+                <a href="sluzby.html" class="active">Služby</a>
+            </div>
+            <div class="nav-button">
+                <button class="btn" onclick="toggleMenu()">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product">
+                <img id="productImage" src="images/house_standard.jpg" alt="Nexilot House">
+                <div class="product-details">
+                    <h1 id="productTitle">Nexilot House Custom</h1>
+                    <div class="product-price" id="productPrice">Cena na vyžiadanie</div>
+                    <div class="variant-selection">
+                        <img src="images/house_mini.jpg" alt="Mini" data-variant="mini" onclick="changeVariant('mini')">
+                        <img src="images/house_standard.jpg" alt="Standard" data-variant="standard" onclick="changeVariant('standard')">
+                        <img src="images/house_premium.jpg" alt="Premium" data-variant="premium" onclick="changeVariant('premium')">
+                        <img src="images/house_custom.jpg" alt="Custom" data-variant="custom" onclick="changeVariant('custom')">
+                    </div>
+                    <div class="selected-variant">
+                        Vybraná varianta: <span id="selectedVariantText">Nexilot House Custom</span>
+                    </div>
+                    <div class="specifications" id="productSpecifications">
+                        <div class="spec-row">
+                            <div>Dĺžka</div>
+                            <div>Na vyžiadanie</div>
+                        </div>
+                        <div class="spec-row">
+                            <div>Šírka</div>
+                            <div>Na vyžiadanie</div>
+                        </div>
+                        <div class="spec-row">
+                            <div>Výška</div>
+                            <div>Na vyžiadanie</div>
+                        </div>
+                        <div class="spec-row">
+                            <div>Spolu</div>
+                            <div>Na vyžiadanie</div>
+                        </div>
+                    </div>
+                    <button class="button">Objednať</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function changeVariant(variant) {
+            const productTitle = document.getElementById("productTitle");
+            const productPrice = document.getElementById("productPrice");
+            const selectedVariantText = document.getElementById("selectedVariantText");
+            const productImage = document.getElementById("productImage");
+            const productSpecifications = document.getElementById("productSpecifications");
+
+            const variants = {
+                mini: {
+                    title: "Nexilot House Mini 2x3m",
+                    price: "16 500 €",
+                    specifications: {
+                        Dĺžka: "2.00 m",
+                        Šírka: "3.00 m",
+                        Výška: "2.50 m",
+                        Spolu: "6 m²",
+                    },
+                    image: "images/house_mini.jpg"
+                },
+                standard: {
+                    title: "Nexilot House Standard 4x2,5m",
+                    price: "21 500 €",
+                    specifications: {
+                        Dĺžka: "4.00 m",
+                        Šírka: "2.50 m",
+                        Výška: "2.50 m",
+                        Spolu: "10 m²",
+                    },
+                    image: "images/house_standard.jpg"
+                },
+                premium: {
+                    title: "Nexilot House Premium 6x3m",
+                    price: "30 500 €",
+                    specifications: {
+                        Dĺžka: "6.00 m",
+                        Šírka: "3.00 m",
+                        Výška: "3.00 m",
+                        Spolu: "18 m²",
+                    },
+                    image: "images/house_premium.jpg"
+                },
+                custom: {
+                    title: "Nexilot House Custom",
+                    price: "Cena na vyžiadanie",
+                    specifications: {
+                        Dĺžka: "Na vyžiadanie",
+                        Šírka: "Na vyžiadanie",
+                        Výška: "Na vyžiadanie",
+                        Spolu: "Na vyžiadanie",
+                    },
+                    image: "images/house_custom.jpg"
+                }
+            };
+
+            const variantData = variants[variant];
+
+            if (variantData) {
+                productTitle.innerText = variantData.title;
+                productPrice.innerText = variantData.price;
+                selectedVariantText.innerText = variantData.title;
+                productImage.src = variantData.image;
+
+                productSpecifications.innerHTML = Object.entries(variantData.specifications)
+                    .map(([key, value]) => `<div class="spec-row"><div>${key}</div><div>${value}</div></div>`)
+                    .join('');
+            }
+        }
+
+        function toggleMenu() {
+            const navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
