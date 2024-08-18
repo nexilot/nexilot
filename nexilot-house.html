@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="sk">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexilot House</title>
-    <link rel="icon" type="image/x-icon" href="/images/profilovka.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -20,45 +18,45 @@
         }
 
         /* Navigačný panel */
-        header {
-            background-color: #000000;
-            padding: 15px 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+header {
+    background-color: #000000;
+    padding: 15px 20px;
+    position: fixed;
+    width: 65%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Zabezpečí centrovanie obsahu */
+    gap: 50px; /* Medzera medzi logom a navigačným menu */
+}
 
-        .nav-logo img {
-            height: 120px;
-        }
+.nav-logo img {
+    height: 120px;
+}
 
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            margin: 0;
-        }
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
 
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #66ff99;
-        }
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #66ff99;
+}
 
         .nav-button .btn {
             display: none;
@@ -257,7 +255,7 @@
 
     <header>
         <div class="header-content">
-            <div class="nav-logo">
+            <div class="nav-logo" style="margin-left: auto;"> <!-- Pridané inline style -->
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
@@ -301,14 +299,26 @@
                             <div>2,5m</div>
                         </div>
                         <div class="spec-row">
-                            <div>Spolu</div>
-                            <div>25m²</div>
+                            <div>Podlahová plocha</div>
+                            <div>10m²</div>
                         </div>
                     </div>
-                    <button class="button">Objednať</button>
+                    <button class="button">Zarezervovať</button>
                 </div>
             </div>
         </div>
+
+    
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
 
         <!-- Sekcia pre tabuľku provízií -->
         <section class="commissions-table-section">
@@ -450,4 +460,5 @@
 </body>
 
 </html>
+
 
