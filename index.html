@@ -8,7 +8,58 @@
     <link rel="icon" type="image/x-icon" href="/images/profilovka.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        *{  
+
+        /* Všeobecné štýly */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #000000, #000000);
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigačný panel */
+header {
+    background-color: #00000000;
+    padding: 15px 20px;
+    position: fixed;
+    width: 65%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Zabezpečí centrovanie obsahu */
+    gap: 50px; /* Medzera medzi logom a navigačným menu */
+}
+
+.nav-logo img {
+    height: 120px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #66ff99;
+}
+*{  
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -19,7 +70,7 @@
             padding: 0;
             scroll-behavior: smooth; /* Smooth scrolling */
             overflow-x: hidden;
-            background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(21, 206, 206));
+            background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 0, 0));
         }
         #background {
             position: fixed;
@@ -152,7 +203,7 @@
             gap: 20px;
         }
         .offers-section .offer-card {
-            background: rgba(117, 72, 75, 0.288);
+            background: rgba(71, 70, 71, 0.288);
             border-radius: 15px;
             overflow: hidden;
             width: 30%;
@@ -191,78 +242,153 @@
         .offers-section .offer-btn:hover {
             background-color: #71756b00;
         }
-        .reservation-section {
-            padding: 50px 20px;
-            text-align: center;
-            width: 100%;
-            background-color: #f0f0f0;
-            color: #000;
-            border-radius: 10px;
-            margin-top: 150px; /* Adjusted margin-top to match new nav height */
+
+        .nav-button .btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        .reservation-section h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+
+        .nav-button .btn:hover {
+            background-color: #005580;
+            border-color: #66ff99;
         }
-        .reservation-form {
+
+        /* Hlavný obsah */
+        main {
+            padding: 100px 20px 20px;
+        }
+
+        .container {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            gap: 20px;
+            min-height: 80vh;
             padding: 20px;
         }
-        .reservation-form div {
+
+        .product {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+            background-color: rgba(163, 146, 146, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 1200px;
+            width: 100%;
         }
-        .reservation-form label {
-            font-size: 16px;
-            margin-bottom: 5px;
+
+        .product img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .reservation-form input {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
+
+        .product-details {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .product h1 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: #66ff99;
+            margin-bottom: 20px;
+        }
+
+        .variant-selection {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .variant-selection img {
+            width: 70px;
+            cursor: pointer;
+            border: 2px solid transparent;
             border-radius: 5px;
+            transition: border-color 0.3s;
         }
-        .reservation-form button {
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 500;
+
+        .variant-selection img.selected {
+            border-color: #66ff99;
+        }
+
+        .specifications {
+            margin: 20px 0;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        .button {
+            background-color: #009933;
             color: #fff;
-            background-color: #44444400;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
             transition: background-color 0.3s;
         }
-        .reservation-form button:hover {
-            background-color: #55555500;
+
+        .button:hover {
+            background-color: #66cc33;
         }
-        /* Footer Section */
-        .footer {
-            width: 100%;
-            background: rgba(39, 39, 39, 0);
-            color: #fff;
+
+        /* Sekcia pre tabuľku */
+        .commissions-table-section {
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .commissions-table-section h2 {
             text-align: center;
-            padding: 20px 20px;
-            margin-top: 50px;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .footer p {
-            font-size: 16px;
-            margin-bottom: 10px;
+
+        .commissions-table-section table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: 'Poppins', sans-serif;
         }
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
+
+        .commissions-table-section th,
+        .commissions-table-section td {
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: center;
         }
-        .footer a:hover {
-            text-decoration: underline;
+
+        .commissions-table-section thead {
+            background-color: #66ff99;
+            color: #000;
         }
-        /* Mobile Styles */
+
+        .commissions-table-section tbody {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobilné štýly */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -270,63 +396,64 @@
                 position: fixed;
                 top: 80px;
                 right: 0;
-                background: #272727;
-                width: 100%;
-                height: calc(100% - 80px); /* Adjusted for new nav height */
-                left: 0;
-                z-index: 100;
+                background: #002244;
+                width: 80%;
+                height: calc(100% - 80px);
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
+
             .nav-menu.active {
                 display: flex;
             }
-            .nav-menu ul {
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-menu ul li {
+
+            .nav-menu a {
                 margin: 10px 0;
                 text-align: center;
             }
+
             .nav-button .btn {
-                display: block; /* Display menu button on mobile */
+                display: block;
             }
-            .hero-image {
-                width: 100%;
+
+            .container {
+                padding: 10px;
             }
-            .offers-section .offer-card {
-                width: 100%;
+
+            .product img {
+                max-width: 100%;
+                margin-bottom: 20px;
             }
-        }
-        /* Tablet Styles */
-        @media (max-width: 992px) {
-            .hero-image {
-                width: 45%; /* Adjusted size for tablets */
+
+            .product h1 {
+                font-size: 24px;
             }
-            .offers-section .offer-card {
-                width: 45%; /* Adjusted size for tablets */
+
+            .product-price {
+                font-size: 20px;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="wrapper">
-        <nav class="nav">
-            <div class="nav-logo">
+
+    <header>
+        <div class="header-content">
+            <div class="nav-logo" style="margin-left: auto;"> <!-- Pridané inline style -->
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="index.html" class="link">Domov</a></li>
-                    <li><a href="rezervacie.html" class="link active">Rezervácie</a></li>
-                    <li><a href="sluzby.html" class="link">Služby</a></li>
-                </ul>
+                <a href="index.html"class="active">Domov</a>
+                <a href="rezervacie.html">Rezervácie</a>
+                <a href="sluzby.html">Služby</a>
             </div>
             <div class="nav-button">
                 <button class="btn" onclick="toggleMenu()">Menu</button>
             </div>
-        </nav>
-
-        <div class="hero-section">
+        </div>
+    </header>
+    <div class="hero-section">
             <div class="hero-images">
                 <div class="hero-image">
                     <img src="images/20.jpg" alt="Nexilot Image 1">
@@ -373,54 +500,4 @@
             <p>E-mail: nexiloteamm@gmail.com</p>
             <p>Telefón: +421 949 244 295</p>
         </div>
-
-        <div class="footer">
-            <p>&copy; 2024 Nexilot. Všetky práva vyhradené.</p>
-            <p>
-                <a href="https://www.instagram.com/nexilot" target="_blank">Instagram</a>|
-                <a href="https://www.twitter.com/nexilot" target="_blank">Twitter</a>
-            </p>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
-    <script>
-        VANTA.WAVES({
-            el: "#background",
-            color: 0xffbe0b,
-            shininess: 50,
-            waveHeight: 20,
-            waveSpeed: 1,
-            zoom: 0.85,
-            colors: [
-                "#ffbe0b",
-                "#fb5607",
-                "#FF0004",
-                "#8338ec",
-                "#3a86ff"
-            ],
-            speed: 3,
-            horizontalPressure: 2,
-            verticalPressure: 2,
-            waveFrequencyX: 1,
-            waveFrequencyY: 2,
-            waveAmplitude: 7,
-            shadows: 4,
-            highlights: 5,
-            colorBrightness: 1,
-            colorSaturation: 2,
-            wireframe: false,
-            colorBlending: 5,
-            backgroundAlpha: 1,
-            resolution: 0.05
-        });
-
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
 
