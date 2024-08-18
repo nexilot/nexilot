@@ -3,90 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-    <title>Nexilot</title>
-    <link rel="icon" type="image/x-icon" href="/images/nexilot_profilovka_5.png">
+    <title>Nexilot House</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        *{  
+
+        /* Všeobecné štýly */
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background: linear-gradient(180deg, #000000, #000000);
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigačný panel */
+header {
+    background-color: #00000000;
+    padding: 15px 20px;
+    position: fixed;
+    width: 65%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Zabezpečí centrovanie obsahu */
+    gap: 50px; /* Medzera medzi logom a navigačným menu */
+}
+
+.nav-logo img {
+    height: 120px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.nav-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #66ff99;
+}
+
+        .nav-button .btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .nav-button .btn:hover {
+            background-color: #005580;
+            border-color: #66ff99;
+        }
+
+        /* Hlavný obsah */
+        main {
+            padding: 100px 20px 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-details {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .product h1 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: #66ff99;
+            margin-bottom: 20px;
+        }
+
+        .variant-selection {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .variant-selection img {
+            width: 70px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .variant-selection img.selected {
+            border-color: #66ff99;
+        }
+
+        .specifications {
+            margin: 20px 0;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        .button {
+            background-color: #009933;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #66cc33;
+        }
+
+        /* Sekcia pre tabuľku */
+        .commissions-table-section {
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .commissions-table-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .commissions-table-section table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
             font-family: 'Poppins', sans-serif;
         }
-        body {
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth; /* Smooth scrolling */
-            overflow-x: hidden;
-            background: linear-gradient(to bottom, rgb(21, 206, 206), rgb(21, 206, 206)); /* Removed the dark color */
-        }
-        #background {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .nav{
-            position: fixed;
-            top: 0;
-            display: flex;
-            justify-content: space-between; /* Change to space-between for better alignment */
-            width: 50%;
-            height: 120px; /* Increased height to accommodate larger logo */
-            line-height: 120px;
-            background: rgba(39, 39, 39, 0);
-            z-index: 100;
-            transition: background 0.3s;
-            padding: 0 20px; /* Add padding for better spacing */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Added shadow for separation */
-        }
-        .nav-logo img{
-            height: 120px; /* Adjusted logo height */
-        }
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-        .nav-menu ul{
-            display: flex;
-            list-style: none;
-        }
-        .nav-menu ul li{
-            margin: 0 -10px; /* Reduced margin */
-        }
-        .nav-menu ul li .link{
-            text-decoration: none;
-            font-weight: 500;
-            color: #fff;
-            padding-bottom: 15px;
-            font-size: 16px; /* Increased font size */
-            border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s;
-        }
-        .link:hover, .active{
-            border-bottom: 2px solid #fff;
-        }
-        .nav-button .btn{
-            width: 130px;
-            height: 40px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0);
+
+        .commissions-table-section th,
+        .commissions-table-section td {
+            padding: 10px;
             border: 1px solid #fff;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: .3s ease;
-            color: #fff;
+            text-align: center;
         }
+
+        .commissions-table-section thead {
+            background-color: #66ff99;
+            color: #000;
+        }
+
+        .commissions-table-section tbody {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobilné štýly */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                right: 0;
+                background: #002244;
+                width: 80%;
+                height: calc(100% - 80px);
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .nav-button .btn {
+                display: block;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .product img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .product h1 {
+                font-size: 24px;
+            }
+
+            .product-price {
+                font-size: 20px;
+            }
+        }
+    
         .btn:hover{
             background: rgba(255, 255, 255, 0.1);
         }
@@ -190,7 +352,7 @@
         }
 
         /* Tablet Styles */
-        @media (max-width: 992px) {
+        @media (max-width: 922px) {
             .hero-image {
                 width: 45%; /* Adjusted size for tablets */
             }
@@ -198,27 +360,78 @@
                 width: 45%; /* Adjusted size for tablets */
             }
         }
+        .offers-section {
+            margin-top: 150px; /* Added margin to create a gap */
+        }
+        .offers-section .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .offers-section .offer-card {
+            background: rgba(39, 37, 37, 0.288);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 30%;
+            min-width: 250px;
+            transition: transform 0.3s;
+        }
+        .offers-section .offer-card:hover {
+            transform: translateY(-10px);
+        }
+        .offers-section .offer-card img {
+            width: 100%;
+            height: auto;
+        }
+        .offers-section .offer-content {
+            padding: 20px;
+        }
+        .offers-section .offer-content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .offers-section .offer-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .offers-section .offer-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000000;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px; /* Make the buttons rounded */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .offers-section .offer-btn:hover {
+            background-color: #71756b00;
+        }
+        
     </style>
 </head>
+
 <body>
-    <div class="wrapper">
-        <nav class="nav">
-            <div class="nav-logo">
+
+    <header>
+        <div class="header-content">
+            <div class="nav-logo" style="margin-left: auto;"> <!-- Pridané inline style -->
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="index.html" class="link">Domov</a></li>
-                    <li><a href="rezervacie.html" class="link active">Rezervácie</a></li>
-                    <li><a href="sluzby.html" class="link">Služby</a></li>
-                </ul>
+                <a href="index.html">Domov</a>
+                <a href="rezervacie.html">Rezervácie</a>
+                <a href="sluzby.html" class="active">Služby</a>
             </div>
             <div class="nav-button">
                 <button class="btn" onclick="toggleMenu()">Menu</button>
             </div>
-        </nav>
-    <!-- Offers Section -->
-    <section class="offers-section">
+        </div>
+    </header>
+     <!-- Offers Section -->
+     <section class="offers-section">
         <div class="container">
             <div class="offer-card">
                 <img src="images/9.jpg" alt="Offer 1">
@@ -241,5 +454,4 @@
  </script>
 </body>
 </html>
-
 
