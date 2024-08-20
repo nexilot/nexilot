@@ -19,45 +19,46 @@
         }
 
         /* Navigačný panel */
-header {
-    background-color: #00000000;
-    padding: 15px 20px;
-    position: fixed;
-    width: 65%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
-}
+        header {
+            background-color: #00000000;
+            padding: 15px 20px;
+            position: fixed;
+            width: 65%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+        }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Zabezpečí centrovanie obsahu */
-    gap: 50px; /* Medzera medzi logom a navigačným menu */
-}
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+        }
 
-.nav-logo img {
-    height: 120px;
-}
+        .nav-logo img {
+            height: 120px;
+        }
 
-.nav-menu {
-    display: flex;
-    gap: 30px;
-    margin: 0;
-}
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
 
-.nav-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: #66ff99;
-}
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #66ff99;
+        }
 
         .nav-button .btn {
             display: none;
@@ -112,18 +113,6 @@ header {
             flex: 1;
             max-width: 500px;
         }
-
-        .product h1 {
-            margin-top: 0;
-            font-size: 28px;
-        }
-
-        .product-price {
-            font-size: 22px;
-            color: #66ff99;
-            margin-bottom: 20px;
-        }
-
         .variant-selection {
             display: flex;
             gap: 10px;
@@ -240,177 +229,87 @@ header {
                 max-width: 100%;
                 margin-bottom: 20px;
             }
-
-            .product h1 {
-                font-size: 24px;
-            }
-
-            .product-price {
-                font-size: 20px;
-            }
         }
-    
-        .btn:hover{
+
+        .btn:hover {
             background: rgba(255, 255, 255, 0.1);
         }
+
         .offers-section {
             margin-top: 150px; /* Added margin to create a gap */
-        }
-        .offers-section .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .offers-section .offer-card {
-            background: rgba(117, 72, 75, 0.288);
-            border-radius: 10px;
-            overflow: hidden;
-            width: 30%;
-            min-width: 250px;
-            transition: transform 0.3s;
-        }
-        .offers-section .offer-card:hover {
-            transform: translateY(-10px);
-        }
-        .offers-section .offer-card img {
-            width: 100%;
-            height: auto;
-        }
-        .offers-section .offer-content {
-            padding: 20px;
-        }
-        .offers-section .offer-content h3 {
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .offers-section .offer-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        .offers-section .offer-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 20px; /* Make the buttons rounded */
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .offers-section .offer-btn:hover {
-            background-color: #71756b00;
-        }
-        /* Footer Section */
-        .footer {
-            width: 100%;
-            background: rgba(39, 39, 39, 0);
-            color: #fff;
-            text-align: center;
-            padding: 20px 20px;
-            margin-top: 50px;
-        }
-        .footer p {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: rgba(39, 39, 39, 0.8);
-                position: absolute;
-                top: 120px; /* Adjusted for larger nav */
-                left: 0;
-                z-index: 100;
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .nav-menu ul {
-                flex-direction: column;
-                width: 100%;
-            }
-            .nav-menu ul li {
-                margin: 10px 0;
-                text-align: center;
-            }
-            .nav-button .btn {
-                display: block; /* Display menu button on mobile */
-            }
         }
 
-        /* Tablet Styles */
-        @media (max-width: 922px) {
-            .hero-image {
-                width: 45%; /* Adjusted size for tablets */
-            }
-            .offers-section .offer-card {
-                width: 45%; /* Adjusted size for tablets */
-            }
-        }
-        .offers-section {
-            margin-top: 150px; /* Added margin to create a gap */
-        }
         .offers-section .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
         }
+
         .offers-section .offer-card {
             background: rgba(39, 37, 37, 0.288);
             border-radius: 10px;
             overflow: hidden;
-            width: 30%;
-            min-width: 250px;
+            width: 22%; /* Zmenšená šírka */
+            min-width: 220px; /* Zmenšená minimálna šírka */
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
+
         .offers-section .offer-card:hover {
             transform: translateY(-10px);
         }
+
         .offers-section .offer-card img {
             width: 100%;
             height: auto;
         }
+
         .offers-section .offer-content {
             padding: 20px;
         }
+
         .offers-section .offer-content h3 {
             margin-bottom: 10px;
-            font-size: 24px;
+            font-size: 20px; /* Zmenšená veľkosť písma */
         }
+
         .offers-section .offer-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
+            margin-bottom: 10px; /* Zmenšená medzera pred cenou */
+            font-size: 14px; /* Zmenšená veľkosť písma */
         }
-        .offers-section .offer-btn {
-            padding: 10px 20px;
+
+        .offers-section .offer-price {
             font-size: 16px;
+            color: #66ff99;
+            margin-bottom: 5px;
+        }
+
+        .offers-section .availability {
+            font-size: 14px;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .offers-section .offer-btn {
+            padding: 8px 16px; /* Zmenšené padding */
+            font-size: 17px; /* Zmenšená veľkosť písma */
             font-weight: 500;
-            color: #000000;
+            color: #000;
             background-color: #fff;
             border: none;
-            border-radius: 10px; /* Make the buttons rounded */
+            border-radius: 10px; /* Zachované zaoblenie */
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .offers-section .offer-btn:hover {
             background-color: #71756b00;
         }
-        
+
     </style>
 </head>
 
@@ -418,7 +317,7 @@ header {
 
     <header>
         <div class="header-content">
-            <div class="nav-logo" style="margin-left: auto;"> <!-- Pridané inline style -->
+            <div class="nav-logo" style="margin-left: auto;">
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
@@ -431,28 +330,48 @@ header {
             </div>
         </div>
     </header>
-     <!-- Offers Section -->
-     <section class="offers-section">
+
+    <!-- Offers Section -->
+    <section class="offers-section">
         <div class="container">
             <div class="offer-card">
-                <img src="images/9.jpg" alt="Offer 1">
+                <img src="images/domcek.jpg" alt="Offer 1">
                 <div class="offer-content">
-                    <h3>Nexilot House</h3>
+                    <h1>Nexilot House</h1>
                     <p>Nexilot Domček - 4 varianty</p>
+                    <p class="offer-price">od 17 000€</p>
+                    <p class="availability">Nedostupné</p>
                     <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
                 </div>
             </div>
-            <!-- Add more offer cards here -->
+            <div class="offer-card">
+                <img src="images/hottub.jpg" alt="Offer 2">
+                <div class="offer-content">
+                    <h1>Nexilot HotTub</h1>
+                    <p>Nexilot Vírivka - 1 varianta</p>
+                    <p class="offer-price">od 10 000€</p>
+                    <p class="availability">Nedostupné</p>
+                    <button class="offer-btn" onclick="window.location.href='nexilot-garden.html'">Prezrieť</button>
+                </div>
+            </div>
+            <div class="offer-card">
+                <img src="images/sauna.jpg" alt="Offer 3">
+                <div class="offer-content">
+                    <h1>Nexilot Sauna</h1>
+                    <p>Nexilot Sauna - 3 variantov</p>
+                    <p class="offer-price">od 10 000€</p>
+                    <p class="availability">Nedostupné</p>
+                    <button class="offer-btn" onclick="window.location.href='nexilot-studio.html'">Prezrieť</button>
+                </div>
+            </div>
         </div>
     </section>
- </div>
 
- <script>
-    function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        menu.classList.toggle('active');
-    }
- </script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
-
