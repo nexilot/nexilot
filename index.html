@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Nexilot</title>
-    <link rel="icon" type="image/x-icon" href="/images/profilovka.png">
+    <title>Nexilot House</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -19,23 +18,31 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigačný panel */
+/* Navigačný panel */
 header {
-    background-color: #00000000;
+    background-color: rgba(0, 0, 0, 0);
     padding: 15px 20px;
     position: fixed;
-    width: 65%;
+    width: 80%;
     top: 0;
     left: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+    box-sizing: border-box; /* Zabezpečuje, že padding a border sú zahrnuté v šírke */
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: center; /* Zabezpečí centrovanie obsahu */
-    gap: 50px; /* Medzera medzi logom a navigačným menu */
+    justify-content: space-between;
+    max-width: 120px; /* Nastaví maximálnu šírku hlavičky */
+    margin: 0 auto; /* Umiestni hlavičku do stredu */
+    width: 100%; /* Uistíme sa, že hlavička má 100% šírku */
+    box-sizing: border-box; /* Zabezpečuje, že padding a border sú zahrnuté v šírke */
+}
+
+.nav-logo {
+    margin-left: auto; /* Posúva logo k pravému okraju */
 }
 
 .nav-logo img {
@@ -55,318 +62,104 @@ header {
     font-size: 16px;
     transition: color 0.3s;
 }
+
 .nav-menu a:hover,
 .nav-menu a.active {
     color: #66ff99;
 }
-*{  
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+
+.nav-button .btn {
+    display: none;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.nav-button .btn:hover {
+    background-color: #66ff99;
+    border-color: #66ff99;
+}
+
+
+        /* Hlavný obsah */
+        main {
+            padding: 140px 20px 20px; /* Zväčšené padding-top, aby sa zarátali hlavička a obrázok */
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        body {
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth; /* Smooth scrolling */
-            overflow-x: hidden;
-            background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 0, 0));
-        }
-        #background {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .nav {
-            position: fixed;
-            top: 0;
-            display: flex;
-            justify-content: space-between; /* Change to space-between for better alignment */
-            width: 50%;
-            height: 120px; /* Increased height to accommodate larger logo */
-            line-height: 120px;
-            background: rgba(39, 39, 39, 0);
-            z-index: 100;
-            transition: background 0.3s;
-            padding: 0 20px; /* Add padding for better spacing */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Added shadow for separation */
-        }
-        .nav-logo img {
-            height: 120px; /* Adjusted logo height */
-        }
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-        }
-        .nav-menu ul li {
-            margin: 0 15px;
-        }
-        .nav-menu ul li .link {
-            text-decoration: none;
-            font-weight: 500;
-            color: #fff;
-            padding-bottom: 15px;
-            border-bottom: 2px solid transparent;
-            transition: border-bottom 0.3s;
-        }
-        .link:hover, .active {
-            border-bottom: 2px solid #fff;
-        }
-        .nav-button .btn {
-            width: 130px;
-            height: 40px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0);
-            border: 1px solid #fff;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: .3s ease;
-            color: #fff;
-        }
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            padding: 150px 20px 50px 20px; /* Adjusted padding */
-        }
-        .hero-images {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+
         .hero-image {
-            width: 30%; /* Adjusted size */
-            border-radius: 15px;
-            overflow: hidden;
+            text-align: center;
+            margin-bottom: 40px; /* Medzera pod obrázkom */
         }
+
         .hero-image img {
-            width: 100%;
+            max-width: 100%;
             height: auto;
-            border-radius: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
         .hero-section h1 {
             font-size: 48px;
-            color: #fff;
             margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out; /* Animation */
-            text-align: center;
+            color: #66ff99;
         }
+
         .hero-section p {
             font-size: 20px;
-            color: #fff;
-            text-align: center;
             max-width: 800px;
-            margin-bottom: 20px;
+            margin: 0 auto;
+            color: #d0d0d0;
         }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .about-section, .mission-section, .vision-section, .offers-section, .contact-section {
-            padding: 50px 20px;
-            text-align: center;
-            color: #fff;
-            width: 100%;
-        }
-        .about-section h2, .mission-section h2, .vision-section h2, .offers-section h2, .contact-section h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .about-section p, .mission-section p, .vision-section p, .offers-section p, .contact-section p {
+
+        .hero-section button {
+            margin-top: 30px;
+            background-color: #66ff99;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             font-size: 18px;
-            margin-bottom: 20px;
-            max-width: 800px;
-            margin: 0 auto 20px;
-        }
-        .offers-section .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .offers-section .offer-card {
-            background: rgba(71, 70, 71, 0.288);
-            border-radius: 15px;
-            overflow: hidden;
-            width: 30%;
-            min-width: 250px;
-            transition: transform 0.3s;
-        }
-        .offers-section .offer-card:hover {
-            transform: translateY(-10px);
-        }
-        .offers-section .offer-card img {
-            width: 100%;
-            height: auto;
-        }
-        .offers-section .offer-content {
-            padding: 20px;
-        }
-        .offers-section .offer-content h3 {
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .offers-section .offer-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        .offers-section .offer-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 20px; /* Make the buttons rounded */
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .offers-section .offer-btn:hover {
-            background-color: #71756b00;
+
+        .hero-section button:hover {
+            background-color: #55cc88;
         }
 
-        .nav-button .btn {
-            display: none;
-            padding: 10px 20px;
-            background-color: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .nav-button .btn:hover {
-            background-color: #005580;
-            border-color: #66ff99;
-        }
-
-        /* Hlavný obsah */
-        main {
-            padding: 100px 20px 20px;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            padding: 20px;
-        }
-
-        .product {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-start;
-            background-color: rgba(163, 146, 146, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .product img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-details {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .product h1 {
-            margin-top: 0;
-            font-size: 28px;
-        }
-
-        .product-price {
-            font-size: 22px;
-            color: #66ff99;
-            margin-bottom: 20px;
-        }
-
-        .variant-selection {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .variant-selection img {
-            width: 70px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-
-        .variant-selection img.selected {
-            border-color: #66ff99;
-        }
-
-        .specifications {
-            margin: 20px 0;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-        }
-
-        .button {
-            background-color: #009933;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #66cc33;
-        }
-
-        /* Sekcia pre tabuľku */
         .commissions-table-section {
             padding: 20px;
-            margin-top: 40px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            animation: fadeInUp 1.5s ease-in-out;
         }
 
         .commissions-table-section h2 {
             text-align: center;
-            font-size: 24px;
+            font-size: 32px;
             margin-bottom: 20px;
+            color: #66ff99;
         }
 
         .commissions-table-section table {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             border-collapse: collapse;
             font-family: 'Poppins', sans-serif;
@@ -385,248 +178,69 @@ header {
         }
 
         .commissions-table-section tbody {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0);
         }
 
-        /* Mobilné štýly */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: fixed;
-                top: 80px;
-                right: 0;
-                background: #002244;
-                width: 80%;
-                height: calc(100% - 80px);
-                padding: 20px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu a {
-                margin: 10px 0;
-                text-align: center;
-            }
-
-            .nav-button .btn {
-                display: block;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .product img {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .product h1 {
-                font-size: 24px;
-            }
-
-            .product-price {
-                font-size: 20px;
-            }
-        }
-                /* Všeobecné štýly */
-                body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, #000000, #000000);
-            color: #fff;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigačný panel */
-header {
-    background-color: #00000000;
-    padding: 15px 20px;
-    position: fixed;
-    width: 65%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Zabezpečí centrovanie obsahu */
-    gap: 50px; /* Medzera medzi logom a navigačným menu */
-}
-
-.nav-logo img {
-    height: 120px;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 30px;
-    margin: 0;
-}
-
-.nav-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: #66ff99;
-}
-
-        .nav-button .btn {
-            display: none;
-            padding: 10px 20px;
-            background-color: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .nav-button .btn:hover {
-            background-color: #005580;
-            border-color: #66ff99;
-        }
-
-        /* Hlavný obsah */
-        main {
-            padding: 100px 20px 20px;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            padding: 20px;
-        }
-
-        .product {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-start;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+        /* Referencie a výzva na akciu */
+        .call-to-action {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            max-width: 1200px;
-            width: 100%;
+            animation: fadeInUp 2s ease-in-out;
         }
 
-        .product img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-details {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .product h1 {
-            margin-top: 0;
+        .call-to-action h3 {
             font-size: 28px;
-        }
-
-        .product-price {
-            font-size: 22px;
-            color: #66ff99;
             margin-bottom: 20px;
+            color: #66ff99;
         }
 
-        .variant-selection {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        .call-to-action p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #d0d0d0;
         }
 
-        .variant-selection img {
-            width: 70px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-
-        .variant-selection img.selected {
-            border-color: #66ff99;
-        }
-
-        .specifications {
-            margin: 20px 0;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-        }
-
-        .button {
-            background-color: #009933;
-            color: #fff;
+        .call-to-action button {
+            margin-top: 20px;
+            background-color: #66ff99;
+            color: #000;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 16px;
             transition: background-color 0.3s;
         }
 
-        .button:hover {
-            background-color: #66cc33;
+        .call-to-action button:hover {
+            background-color: #55cc88;
         }
 
-        /* Sekcia pre tabuľku */
-        .commissions-table-section {
-            padding: 20px;
-            margin-top: 40px;
+        /* Animácie */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
-        .commissions-table-section h2 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-        .commissions-table-section table {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            border-collapse: collapse;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .commissions-table-section th,
-        .commissions-table-section td {
-            padding: 10px;
-            border: 1px solid #fff;
-            text-align: center;
-        }
-
-        .commissions-table-section thead {
-            background-color: #66ff99;
-            color: #000;
-        }
-
-        .commissions-table-section tbody {
-            background-color: rgba(255, 255, 255, 0.1);
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Mobilné štýly */
@@ -637,11 +251,11 @@ header {
                 position: fixed;
                 top: 80px;
                 right: 0;
-                background: #002244;
+                background: #00224400;
                 width: 80%;
                 height: calc(100% - 80px);
                 padding: 20px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
             }
 
             .nav-menu.active {
@@ -657,35 +271,41 @@ header {
                 display: block;
             }
 
-            .container {
-                padding: 10px;
+            .hero-section h1 {
+                font-size: 32px;
             }
 
-            .product img {
-                max-width: 100%;
-                margin-bottom: 20px;
+            .hero-section p {
+                font-size: 16px;
             }
 
-            .product h1 {
+            .commissions-table-section h2 {
                 font-size: 24px;
             }
 
-            .product-price {
-                font-size: 20px;
+            .commissions-table-section table {
+                font-size: 14px;
+            }
+
+            .call-to-action h3 {
+                font-size: 22px;
+            }
+
+            .call-to-action p {
+                font-size: 16px;
             }
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <div class="header-content">
-            <div class="nav-logo" style="margin-left: auto;"> <!-- Pridané inline style -->
+            <div class="nav-logo">
                 <img src="images/nexilotlogo.png" alt="Nexilot Logo">
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="index.html"class="active">Domov</a>
+                <a href="index.html" class="active">Domov</a>
                 <a href="rezervacie.html">Rezervácie</a>
                 <a href="sluzby.html">Služby</a>
             </div>
@@ -695,52 +315,89 @@ header {
         </div>
     </header>
 
-    <div class="hero-section">
-            <div class="hero-images">
-                <div class="hero-image">
-                    <img src="images/20.jpg" alt="Nexilot Image 1">
-                </div>
-                <div class="hero-image">
-                    <img src="images/10.jpg" alt="Nexilot Image 2">
-                </div>
-            </div>
-            <h1>Čo je NEXILOT?</h1>
-            <p>NEXILOT = miesto, kam idete za oddychom alebo za prácou a produktivitou...</p>
-            <p>Ponúkame Nexiloty ktoré si môžete kúpiť alebo prenajať cez náš web.</p>
-            <p>Ponúkame najnižšie CENY</p>
-        </div>
+    <main>
+        <!-- Sekcia pre obrázok -->
+        <section class="hero-image">
+            <img src="images/domcek.jpg" alt="Popis obrázku">
+    
+        <section class="hero-section">
+            <h1>Vitajte v Nexilote</h1>
+            <p>Projekt Nexilot je navrhnutý pre tých, ktorí hľadajú inovácie a komfort. Ponúkame rôzne riešenia bývania, ktoré sú prispôsobené vašim potrebám. Objavte naše produkty a výhody, ktoré vám môžu zmeniť život.</p>
+            <button>Viac o nás</button>
+        </section>
 
-        <div class="vision-section">
-            <div class="hero-images">
-                <div class="hero-image">
-                    <img src="images/9.jpg" alt="Nexilot Vision 1">
-                </div>
-                <div class="hero-image">
-                    <img src="images/16.jpg" alt="Nexilot Vision 2">
-                </div>
-            </div>
-            <h2>Naša vízia</h2>
-            <p>Chceme zaviesť 1000 Nexilotov do 5 rokov...</p>
-            <p>Našim cieľom je zabezpečiť zákazníkom komfort a peňažnú slobodu...</p>
-        </div>
+        <!-- Sekcia pre tabuľku provízií -->
+        <section class="commissions-table-section">
+            <h2>Tabuľka ponuky</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Balík</th>
+                        <th>Cena</th>
+                        <th>Provízia</th>
+                        <th>Dodacie podmienky</th>
+                        <th>Doplňujúce výhody</th>
+                        <th>Miesto na našom webe</th>
+                        <th>Mesačný Prenájom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mini</td>
+                        <td>17 000€</td>
+                        <td>5%</td>
+                        <td>4 týždne</td>
+                        <td>Montáž zdarma</td>
+                        <td>Áno</td>
+                        <td>55€/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Standard</td>
+                        <td>24 000€</td>
+                        <td>7%</td>
+                        <td>6 týždňov</td>
+                        <td>Montáž zdarma</td>
+                        <td>Áno</td>
+                        <td>78€/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Premium</td>
+                        <td>46 000€</td>
+                        <td>10%</td>
+                        <td>8 týždňov</td>
+                        <td>Montáž zdarma</td>
+                        <td>Áno</td>
+                        <td>285€/mes</td>
+                    </tr>
+                    <tr>
+                        <td>Custom</td>
+                        <td>Podľa požiadaviek</td>
+                        <td>Na vyžiadanie</td>
+                        <td>Podľa dohody</td>
+                        <td>Podľa požiadaviek</td>
+                        <td>Áno</td>
+                        <td>Podľa dohody</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-        <div class="offers-section">
-            <h2>Naša Ponuka</h2>
-            <div class="container">
-                <div class="offer-card">
-                    <img src="images/9.jpg" alt="Nexilot House">
-                    <div class="offer-content">
-                        <h3>Nexilot House</h3>
-                        <p>Comfortable and affordable cabin houses that can be moved to your desired location.</p>
-                        <button class="offer-btn" onclick="window.location.href='nexilot-house.html'">Prezrieť</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-section">
-            <h2>Kontaktujte nás</h2>
-            <p>E-mail: nexiloteamm@gmail.com</p>
-            <p>Telefón: +421 949 244 295</p>
-        </div>
+        <!-- Sekcia pre výzvu na akciu alebo referencie -->
+        <section class="call-to-action">
+            <h3>Prečo si vybrať Nexilot House?</h3>
+            <p>Naši zákazníci oceňujú flexibilitu, kvalitu a spoľahlivosť našich riešení. Pripojte sa k našim spokojným zákazníkom a zistite, prečo je Nexilot House tou najlepšou voľbou pre moderné bývanie.</p>
+            <button>Kontaktujte nás</button>
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
+
 
 
