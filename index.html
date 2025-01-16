@@ -19,83 +19,82 @@
             scroll-behavior: smooth;
         }
 
-/* Navigačný panel */
-header {
-    background-color: rgba(0, 0, 0, 0);
-    padding: 15px 20px;
-    position: fixed;
-    width: 80%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
-    box-sizing: border-box; /* Zabezpečuje, že padding a border sú zahrnuté v šírke */
-}
+        /* Navigačný panel */
+        header {
+            background-color: rgba(0, 0, 0, 0);
+            padding: 15px 20px;
+            position: fixed;
+            width: 80%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+            box-sizing: border-box;
+        }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 120px; /* Nastaví maximálnu šírku hlavičky */
-    margin: 0 auto; /* Umiestni hlavičku do stredu */
-    width: 100%; /* Uistíme sa, že hlavička má 100% šírku */
-    box-sizing: border-box; /* Zabezpečuje, že padding a border sú zahrnuté v šírke */
-}
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 120px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-.nav-logo {
-    margin-left: auto; /* Posúva logo k pravému okraju */
-}
+        .nav-logo {
+            margin-left: auto;
+        }
 
-.nav-logo img {
-    height: 120px;
-}
+        .nav-logo img {
+            height: 120px;
+        }
 
-.nav-menu {
-    display: flex;
-    gap: 30px;
-    margin: 0;
-}
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
 
-.nav-menu a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
 
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: #66ff99;
-}
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #66ff99;
+        }
 
-.nav-button .btn {
-    display: none;
-    padding: 10px 20px;
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-}
+        .nav-button .btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
 
-.nav-button .btn:hover {
-    background-color: #66ff99;
-    border-color: #66ff99;
-}
-
+        .nav-button .btn:hover {
+            background-color: #66ff99;
+            border-color: #66ff99;
+        }
 
         /* Hlavný obsah */
         main {
-            padding: 140px 20px 20px; /* Zväčšené padding-top, aby sa zarátali hlavička a obrázok */
+            padding: 140px 20px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .hero-image {
             text-align: center;
-            margin-bottom: 40px; /* Medzera pod obrázkom */
+            margin-bottom: 40px;
         }
 
         .hero-image img {
@@ -103,6 +102,77 @@ header {
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sekcia na zbierku */
+        .fundraising-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            color: #d0d0d0;
+        }
+
+        .fundraising-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #66ff99;
+        }
+
+        .fundraising-section p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .fundraising-section .progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #444;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .fundraising-section .progress-bar .progress {
+            height: 100%;
+            background-color: #66ff99;
+            width: 0.275%; /* Dynamicky nastaviteľné podľa výšky vyzbieranej sumy */
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .fundraising-section .amount-raised {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .fundraising-section .goal {
+            font-size: 18px;
+            color: #999;
+        }
+
+        /* Zoznam prispievateľov */
+        .donors-list {
+            margin-top: 30px;
+            text-align: left;
+            color: #d0d0d0;
+        }
+
+        .donors-list h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #66ff99;
+        }
+
+        .donors-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .donors-list ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
         }
 
         .hero-section {
@@ -140,83 +210,6 @@ header {
         }
 
         .hero-section button:hover {
-            background-color: #55cc88;
-        }
-
-        .commissions-table-section {
-            padding: 20px;
-            margin-top: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            animation: fadeInUp 1.5s ease-in-out;
-        }
-        .commissions-table-section h2 {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #66ff99;
-        }
-
-        .commissions-table-section table {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            border-collapse: collapse;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .commissions-table-section th,
-        .commissions-table-section td {
-            padding: 10px;
-            border: 1px solid #fff;
-            text-align: center;
-        }
-
-        .commissions-table-section thead {
-            background-color: #66ff99;
-            color: #000;
-        }
-
-        .commissions-table-section tbody {
-            background-color: rgba(255, 255, 255, 0);
-        }
-
-        /* Referencie a výzva na akciu */
-        .call-to-action {
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 40px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            animation: fadeInUp 2s ease-in-out;
-        }
-
-        .call-to-action h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #66ff99;
-        }
-
-        .call-to-action p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
-            color: #d0d0d0;
-        }
-
-        .call-to-action button {
-            margin-top: 20px;
-            background-color: #66ff99;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .call-to-action button:hover {
             background-color: #55cc88;
         }
 
@@ -279,20 +272,12 @@ header {
                 font-size: 16px;
             }
 
-            .commissions-table-section h2 {
+            .fundraising-section h2 {
                 font-size: 24px;
             }
 
-            .commissions-table-section table {
-                font-size: 14px;
-            }
-
-            .call-to-action h3 {
-                font-size: 22px;
-            }
-
-            .call-to-action p {
-                font-size: 16px;
+            .fundraising-section p {
+                font-size: 18px;
             }
         }
     </style>
@@ -319,22 +304,47 @@ header {
         <!-- Sekcia pre obrázok -->
         <section class="hero-image">
             <img src="images/podpora2.png" alt="Podpor Projekt">
-    
-        <section class="hero-section">
-            <h1>Vitajte na oficiálnej stránke projektu NEXILOT</h1>
-            <p>Projekt Nexilot je navrhnutý pre tých, ktorí majú radi jednoduchosť a praktické systémy. Naša vízia je aby naše Nexiloty boli skoro všade a tým myslíme napr. na ihriskách kde si budete môcť požičať loptu alebo hokejku z našich  Nexilot Boxov. Keď sa projekt rozbehne chceli by sme realizovať aj určité spacie kapsule do ktorých by ste si mohli zas cez naš web alebo aplikáciu objednať jedlo z okolitých reštaurácií. A vela dalších vecí... Ale dočkáme sa toho iba ak sa nájde dostatok ľudí ktorý budú chcieť projekt podporiť. Všetci čo projekt chcú podporiť, tak zachvílu to už bude možné cez zálohované obaly ale aj cez QR kod. Dopredu ďakujeme, dakedy uvidíme pri spustení tohoto projektu...</p>
-            <a href="https://www.instagram.com/nexilot/">
-                <button>Sledujte nás na Instagrame</button>
-              </a>
         </section>
 
+        <!-- Sekcia pre zbierku -->
+        <section class="fundraising-section">
+            <h2>Podpora projektu Nexilot</h2>
+            <p>Podporiť môžete cez qr kód alebo tlačidlom nižšie.</p>
+            <p>Cieľ: vyzbierať 20 000€ na realizáciu nášho projektu.</p>
+            <p>Do poznámky napíšte či chchete byť zobrazený na webe alebo nie.</p>
+            <p>Ďakujeme za podporu všetkým <3</p>
+            <div class="progress-bar">
+                <div class="progress" style="width: 0.29%;"></div> <!-- Dynamická šírka na základe aktuálne vyzbieranej sumy -->
+            </div>
+            <div class="amount-raised">Vyzbierané: 58€</div>
+            <div class="goal">Cieľová suma: 20 000€</div>
+
+            <!-- Zoznam prispievateľov -->
+            <div class="donors-list">
+                <h3>Prispievatelia:</h3>
+                <ul>
+                    <li>Adam Olejník – 55€</li>
+                    <li>Anonymný prispievateľ – 3€</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Hlavná sekcia -->
+        <section class="hero-section">
+            <h1>Podporte našu víziu</h1>
+            <p>Nexilot je inovatívny projekt zameraný na vytváranie ekologických a pohodlných priestorov na odpočinok. Pripojte sa k nám a pomôžte nám realizovať túto víziu.</p>
+            <button onclick="window.location.href='https://payme.sk/?V=1&IBAN=SK8011000000002931741420&AM=3.00&CC=EUR&DT=&PI=&MSG=&CN='">Prispej teraz</button>
+        </section>
+    </main>
 
     <script>
         function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+            var navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("active");
         }
     </script>
 </body>
 
 </html>
+
 
