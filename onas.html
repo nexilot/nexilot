@@ -4,7 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Točková Hra</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .slot-machine {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .slot {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 80px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Točková Hra</h1>
@@ -16,6 +52,39 @@
     <button id="spinButton">Točiť!</button>
     <p id="result"></p>
 
-    <script src="script.js"></script>
+    <script>
+        const symbols = ["🍒", "🍋", "🍉", "⭐", "🍇"]; // Možné symboly
+        const slot1 = document.getElementById("slot1");
+        const slot2 = document.getElementById("slot2");
+        const slot3 = document.getElementById("slot3");
+        const spinButton = document.getElementById("spinButton");
+        const resultText = document.getElementById("result");
+
+        spinButton.addEventListener("click", () => {
+            resultText.textContent = "Točí sa...";
+            
+            // Simulujeme točenie - rýchlo meníme symboly
+            let spins = 10;
+            let interval = setInterval(() => {
+                slot1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                slot2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                slot3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                spins--;
+
+                if (spins === 0) {
+                    clearInterval(interval);
+                    checkWin();
+                }
+            }, 100);
+        });
+
+        function checkWin() {
+            if (slot1.textContent === slot2.textContent && slot2.textContent === slot3.textContent) {
+                resultText.textContent = "🎉 Vyhral si!";
+            } else {
+                resultText.textContent = "😢 Skús znova!";
+            }
+        }
+    </script>
 </body>
 </html>
