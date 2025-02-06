@@ -8,7 +8,8 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #121212;
+            color: #ffffff;
         }
 
         .slot-machine {
@@ -24,8 +25,8 @@
             font-size: 50px;
             text-align: center;
             line-height: 80px;
-            background-color: white;
-            border: 2px solid black;
+            background-color: #1e1e1e;
+            border: 2px solid #ffffff;
             border-radius: 10px;
         }
 
@@ -33,6 +34,15 @@
             padding: 15px 30px;
             font-size: 20px;
             cursor: pointer;
+            background-color: #6200ea;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:disabled {
+            background-color: #333;
+            cursor: not-allowed;
         }
 
         #result, #balance {
@@ -40,16 +50,23 @@
             font-weight: bold;
             margin-top: 20px;
         }
+
+        input {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 5px;
+            width: 60px;
+        }
     </style>
 </head>
 <body>
-    <h1>Točková Hra</h1>
+    <h1>🎰 Točková Hra 🎰</h1>
     <p>Minimálna stávka: 10 mincí</p>
     <p>Vyhraj trojicu a znásob svoju výhru!</p>
 
     <div>
         <label>Stávka: <input type="number" id="bet" min="10" value="10"></label>
-        <label>Násobok výhry: <input type="number" id="multiplier" min="2" value="2"></label>
     </div>
 
     <p>💰 Tvoje mince: <span id="balance">100</span></p>
@@ -73,12 +90,9 @@
         const resultText = document.getElementById("result");
         const balanceText = document.getElementById("balance");
         const betInput = document.getElementById("bet");
-        const multiplierInput = document.getElementById("multiplier");
 
         spinButton.addEventListener("click", () => {
             let bet = parseInt(betInput.value);
-            let multiplier = parseInt(multiplierInput.value);
-
             if (bet < 10) {
                 resultText.textContent = "Minimálna stávka je 10 mincí!";
                 return;
@@ -89,11 +103,11 @@
                 return;
             }
 
+            let multiplier = getMultiplier(bet);
             balance -= bet;
             balanceText.textContent = balance;
             resultText.textContent = "⏳ Čakaj 3 sekundy...";
-
-            spinButton.disabled = true; // Zakázať tlačidlo počas čakania
+            spinButton.disabled = true;
 
             setTimeout(() => {
                 resultText.textContent = "Točí sa...";
@@ -107,21 +121,27 @@
                     if (spins === 0) {
                         clearInterval(interval);
                         checkWin(bet, multiplier);
-                        spinButton.disabled = false; // Povoliť tlačidlo po skončení
+                        spinButton.disabled = false;
                     }
                 }, 100);
-            }, 3000); // Oneskorenie 3 sekundy pred začiatkom točenia
+            }, 3000);
         });
 
         function checkWin(bet, multiplier) {
             if (slot1.textContent === slot2.textContent && slot2.textContent === slot3.textContent) {
                 let winnings = bet * multiplier;
                 balance += winnings;
-                resultText.textContent = `🎉 Vyhral si ${winnings} mincí!`;
+                resultText.textContent = `🎉 Vyhral si ${winnings} mincí! (Násobok ${multiplier}×)`;
             } else {
                 resultText.textContent = "😢 Skús znova!";
             }
             balanceText.textContent = balance;
+        }
+
+        function getMultiplier(bet) {
+            if (bet >= 100) return 5;
+            if (bet >= 50) return 3;
+            return 2;
         }
     </script>
 </body>
