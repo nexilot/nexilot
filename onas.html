@@ -61,7 +61,7 @@
     </style>
 </head>
 <body>
-    <h1>🎰 Točková Hra 🎰</h1>
+    <h1>🎰 NEXILOT Hra 🎰</h1>
     <p>Minimálna stávka: 10 mincí</p>
     <p>Vyhraj trojicu a znásob svoju výhru!</p>
 
@@ -106,7 +106,7 @@
             let multiplier = getMultiplier(bet);
             balance -= bet;
             balanceText.textContent = balance;
-            resultText.textContent = "⏳ Čakaj 3 sekundy...";
+            resultText.textContent = "⏳ Točenie začne o 1 sekundu...";
             spinButton.disabled = true;
 
             setTimeout(() => {
@@ -121,7 +121,11 @@
                     if (spins === 0) {
                         clearInterval(interval);
                         checkWin(bet, multiplier);
-                        spinButton.disabled = false;
+
+                        // Cooldown 1,5 sekundy po skončení
+                        setTimeout(() => {
+                            spinButton.disabled = false;
+                        }, 1500);
                     }
                 }, 100);
             }, 1000);
