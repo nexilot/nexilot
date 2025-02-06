@@ -35,7 +35,7 @@
             cursor: pointer;
         }
 
-        #result {
+        #result, #balance {
             font-size: 20px;
             font-weight: bold;
             margin-top: 20px;
@@ -44,46 +44,84 @@
 </head>
 <body>
     <h1>Točková Hra</h1>
+    <p>Minimálna stávka: 10 mincí</p>
+    <p>Vyhraj trojicu a znásob svoju výhru!</p>
+
+    <div>
+        <label>Stávka: <input type="number" id="bet" min="10" value="10"></label>
+        <label>Násobok výhry: <input type="number" id="multiplier" min="2" value="2"></label>
+    </div>
+
+    <p>💰 Tvoje mince: <span id="balance">100</span></p>
+
     <div class="slot-machine">
         <div class="slot" id="slot1">❓</div>
         <div class="slot" id="slot2">❓</div>
         <div class="slot" id="slot3">❓</div>
     </div>
+    
     <button id="spinButton">Točiť!</button>
     <p id="result"></p>
 
     <script>
-        const symbols = ["🍒", "🍋", "🍉", "⭐", "🍇"]; // Možné symboly
+        let balance = 100;
+        const symbols = ["🍒", "🍋", "🍉", "⭐", "🍇"];
         const slot1 = document.getElementById("slot1");
         const slot2 = document.getElementById("slot2");
         const slot3 = document.getElementById("slot3");
         const spinButton = document.getElementById("spinButton");
         const resultText = document.getElementById("result");
+        const balanceText = document.getElementById("balance");
+        const betInput = document.getElementById("bet");
+        const multiplierInput = document.getElementById("multiplier");
 
         spinButton.addEventListener("click", () => {
-            resultText.textContent = "Točí sa...";
-            
-            // Simulujeme točenie - rýchlo meníme symboly
-            let spins = 10;
-            let interval = setInterval(() => {
-                slot1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                slot2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                slot3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                spins--;
+            let bet = parseInt(betInput.value);
+            let multiplier = parseInt(multiplierInput.value);
 
-                if (spins === 0) {
-                    clearInterval(interval);
-                    checkWin();
-                }
-            }, 100);
+            if (bet < 10) {
+                resultText.textContent = "Minimálna stávka je 10 mincí!";
+                return;
+            }
+
+            if (bet > balance) {
+                resultText.textContent = "Nemáš dostatok mincí!";
+                return;
+            }
+
+            balance -= bet;
+            balanceText.textContent = balance;
+            resultText.textContent = "⏳ Čakaj 3 sekundy...";
+
+            spinButton.disabled = true; // Zakázať tlačidlo počas čakania
+
+            setTimeout(() => {
+                resultText.textContent = "Točí sa...";
+                let spins = 10;
+                let interval = setInterval(() => {
+                    slot1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    slot2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    slot3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    spins--;
+
+                    if (spins === 0) {
+                        clearInterval(interval);
+                        checkWin(bet, multiplier);
+                        spinButton.disabled = false; // Povoliť tlačidlo po skončení
+                    }
+                }, 100);
+            }, 3000); // Oneskorenie 3 sekundy pred začiatkom točenia
         });
 
-        function checkWin() {
+        function checkWin(bet, multiplier) {
             if (slot1.textContent === slot2.textContent && slot2.textContent === slot3.textContent) {
-                resultText.textContent = "🎉 Vyhral si!";
+                let winnings = bet * multiplier;
+                balance += winnings;
+                resultText.textContent = `🎉 Vyhral si ${winnings} mincí!`;
             } else {
                 resultText.textContent = "😢 Skús znova!";
             }
+            balanceText.textContent = balance;
         }
     </script>
 </body>
