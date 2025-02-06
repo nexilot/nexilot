@@ -44,6 +44,7 @@
             color: #ffffff;
             border: none;
             border-radius: 5px;
+            margin: 5px;
         }
 
         button:disabled {
@@ -51,7 +52,7 @@
             cursor: not-allowed;
         }
 
-        #result, #balance {
+        #result, #balance, #multiplier {
             font-size: 20px;
             font-weight: bold;
             margin-top: 20px;
@@ -75,9 +76,11 @@
     </div>
 
     <p>💰 Tvoje mince: <span id="balance">100</span></p>
+    <p>🔄 Aktuálny násobok: <span id="multiplier">1×</span></p>
 
     <div class="grid" id="grid"></div>
 
+    <button id="cashoutButton" disabled>Vybrať výhru</button>
     <button id="restartButton">Nová hra</button>
     <p id="result"></p>
 
@@ -87,11 +90,14 @@
         let safeClicks = 0;
         let bombs = [];
         let cells = [];
+        let multiplier = 1;
         const grid = document.getElementById("grid");
         const resultText = document.getElementById("result");
         const balanceText = document.getElementById("balance");
         const betInput = document.getElementById("bet");
         const restartButton = document.getElementById("restartButton");
+        const cashoutButton = document.getElementById("cashoutButton");
+        const multiplierText = document.getElementById("multiplier");
 
         function startGame() {
             bet = parseInt(betInput.value);
@@ -109,13 +115,16 @@
             balanceText.textContent = balance;
             resultText.textContent = "🧐 Vyber bezpečné okienka!";
             safeClicks = 0;
+            multiplier = 1;
+            multiplierText.textContent = "1×";
+            cashoutButton.disabled = true;
             grid.innerHTML = "";
 
             // Generovanie bômb
-            bombs = Array(12).fill(false);
-            let bombCount = 3;
+            bombs = Array(16).fill(false);
+            let bombCount = 5;
             while (bombCount > 0) {
-                let index = Math.floor(Math.random() * 12);
+                let index = Math.floor(Math.random() * 16);
                 if (!bombs[index]) {
                     bombs[index] = true;
                     bombCount--;
@@ -123,7 +132,7 @@
             }
 
             // Vytvorenie hracej plochy
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 16; i++) {
                 let cell = document.createElement("div");
                 cell.classList.add("cell");
                 cell.dataset.index = i;
@@ -145,6 +154,7 @@
                 });
                 resultText.textContent = "😢 Prehral si!";
                 restartButton.disabled = false;
+                cashoutButton.disabled = true;
                 return;
             }
 
@@ -153,16 +163,31 @@
             cells[index].classList.add("revealed");
             safeClicks++;
 
-            if (safeClicks >= 5) {
-                let winnings = bet * 2;
-                balance += winnings;
-                balanceText.textContent = balance;
-                resultText.textContent = `🎉 Vyhral si ${winnings} mincí!`;
-                cells.forEach(cell => cell.classList.add("revealed"));
-                restartButton.disabled = false;
+            updateMultiplier();
+            cashoutButton.disabled = safeClicks < 2;
+
+            if (safeClicks >= 8) {
+                cashOut();
             }
         }
 
+        function updateMultiplier() {
+            let multipliers = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 4];
+            multiplier = multipliers[safeClicks - 1] || 4;
+            multiplierText.textContent = `${multiplier.toFixed(1)}×`;
+        }
+
+        function cashOut() {
+            let winnings = Math.round(bet * multiplier);
+            balance += winnings;
+            balanceText.textContent = balance;
+            resultText.textContent = `🎉 Vyhral si ${winnings} mincí!`;
+            cashoutButton.disabled = true;
+            restartButton.disabled = false;
+            cells.forEach(cell => cell.classList.add("revealed"));
+        }
+
+        cashoutButton.addEventListener("click", cashOut);
         restartButton.addEventListener("click", startGame);
 
         startGame();
