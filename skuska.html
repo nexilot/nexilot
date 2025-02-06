@@ -44,7 +44,7 @@
             color: #ffffff;
             border: none;
             border-radius: 5px;
-            margin: 5px;
+            margin: 10px;
         }
 
         button:disabled {
@@ -74,9 +74,12 @@
     <div>
         <label>Stávka: <input type="number" id="bet" min="10" value="10"></label>
     </div>
+    <div>
+        <label>Počet bômb: <input type="number" id="bombCount" min="1" max="10" value="5"></label>
+    </div>
 
     <p>💰 Tvoje mince: <span id="balance">100</span></p>
-    <p>🔄 Aktuálny násobok: <span id="multiplier">1×</span></p>
+    <p>🔢 Násobok výhry: <span id="multiplier">1×</span></p>
 
     <div class="grid" id="grid"></div>
 
@@ -90,17 +93,21 @@
         let safeClicks = 0;
         let bombs = [];
         let cells = [];
-        let multiplier = 1;
+        let cashoutMultiplier = 1;
+        let bombCount = 5;
         const grid = document.getElementById("grid");
         const resultText = document.getElementById("result");
         const balanceText = document.getElementById("balance");
+        const multiplierText = document.getElementById("multiplier");
         const betInput = document.getElementById("bet");
+        const bombInput = document.getElementById("bombCount");
         const restartButton = document.getElementById("restartButton");
         const cashoutButton = document.getElementById("cashoutButton");
-        const multiplierText = document.getElementById("multiplier");
 
         function startGame() {
             bet = parseInt(betInput.value);
+            bombCount = parseInt(bombInput.value);
+
             if (bet < 10) {
                 resultText.textContent = "Minimálna stávka je 10 mincí!";
                 return;
@@ -115,19 +122,19 @@
             balanceText.textContent = balance;
             resultText.textContent = "🧐 Vyber bezpečné okienka!";
             safeClicks = 0;
-            multiplier = 1;
+            cashoutMultiplier = 1;
             multiplierText.textContent = "1×";
             cashoutButton.disabled = true;
             grid.innerHTML = "";
 
             // Generovanie bômb
             bombs = Array(16).fill(false);
-            let bombCount = 5;
-            while (bombCount > 0) {
+            let placedBombs = 0;
+            while (placedBombs < bombCount) {
                 let index = Math.floor(Math.random() * 16);
                 if (!bombs[index]) {
                     bombs[index] = true;
-                    bombCount--;
+                    placedBombs++;
                 }
             }
 
@@ -146,49 +153,63 @@
 
         function revealCell(index) {
             if (bombs[index]) {
+                // Prehral si
                 cells[index].textContent = "💥";
                 cells[index].style.backgroundColor = "red";
-                cells.forEach((cell, i) => {
-                    if (bombs[i]) cell.textContent = "💣";
-                    cell.classList.add("revealed");
-                });
+                revealAll();
                 resultText.textContent = "😢 Prehral si!";
                 restartButton.disabled = false;
                 cashoutButton.disabled = true;
                 return;
             }
 
+            // Správne políčko
             cells[index].textContent = "✅";
             cells[index].style.backgroundColor = "green";
             cells[index].classList.add("revealed");
             safeClicks++;
 
-            updateMultiplier();
-            cashoutButton.disabled = safeClicks < 2;
+            // Zvýšenie násobku podľa počtu bômb
+            cashoutMultiplier = getMultiplier(safeClicks, bombCount);
+            multiplierText.textContent = `${cashoutMultiplier}×`;
 
-            if (safeClicks >= 8) {
-                cashOut();
+            // Povolenie vybratia výhry
+            if (safeClicks >= 2) {
+                cashoutButton.disabled = false;
+            }
+
+            // Výhra pri 7 bezpečných políčkach
+            if (safeClicks >= 7) {
+                cashout();
             }
         }
 
-        function updateMultiplier() {
-            let multipliers = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 4];
-            multiplier = multipliers[safeClicks - 1] || 4;
-            multiplierText.textContent = `${multiplier.toFixed(1)}×`;
-        }
-
-        function cashOut() {
-            let winnings = Math.round(bet * multiplier);
+        function cashout() {
+            let winnings = bet * cashoutMultiplier;
             balance += winnings;
             balanceText.textContent = balance;
-            resultText.textContent = `🎉 Vyhral si ${winnings} mincí!`;
-            cashoutButton.disabled = true;
+            resultText.textContent = `🎉 Vybral si ${winnings} mincí!`;
+            revealAll();
             restartButton.disabled = false;
-            cells.forEach(cell => cell.classList.add("revealed"));
+            cashoutButton.disabled = true;
         }
 
-        cashoutButton.addEventListener("click", cashOut);
+        function revealAll() {
+            cells.forEach((cell, i) => {
+                if (bombs[i]) cell.textContent = "💣";
+                cell.classList.add("revealed");
+            });
+        }
+
+        function getMultiplier(safeClicks, bombCount) {
+            const baseMultipliers = {1: 1.2, 2: 1.5, 3: 2, 4: 2.5, 5: 3, 6: 3.5, 7: 4};
+            let multiplier = baseMultipliers[safeClicks] || 1;
+            return (multiplier + (bombCount * 0.1)).toFixed(2);
+        }
+
         restartButton.addEventListener("click", startGame);
+        cashoutButton.addEventListener("click", cashout);
+        bombInput.addEventListener("change", startGame);
 
         startGame();
     </script>
